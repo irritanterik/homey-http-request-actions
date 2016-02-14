@@ -12,7 +12,11 @@
         "name": "Erik van Dongen",
         "email": "gdvandongen@gmail.com"
     },
-    "category": "Internet",
+    "images": {
+      "large": "./assets/images/large.jpg",
+      "small": "./assets/images/small.jpg"
+    },
+    "category": "internet",
     "dependencies": {
       "request": "*"
     },
