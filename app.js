@@ -15,6 +15,8 @@ var self = module.exports = {
 					if (!error && response.statusCode == 200) {
 						// ready
 						callback( null, true);
+					} else {
+						callback( error )
 					}
 				}
 			)
@@ -34,6 +36,8 @@ var self = module.exports = {
 					if (!error && response.statusCode == 200) {
 						// ready
 						callback( null, true);
+					} else {
+						callback( error )
 					}
 				}
 			)
@@ -52,6 +56,8 @@ var self = module.exports = {
 					if (!error && response.statusCode == 200) {
 						// ready
 						callback( null, true);
+					} else {
+						callback( error )
 					}
 				}
 			)
