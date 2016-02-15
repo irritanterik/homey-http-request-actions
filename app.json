@@ -1,12 +1,12 @@
 {
     "id": "com.internet",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "compatibility": "*",
     "name": {
         "en": "HTTP request actions"
     },
     "description": {
-      "en": "HTTP request actions for flows"
+      "en": "HTTP request conditions and actions for flows"
     },
     "author": {
         "name": "Erik van Dongen",
@@ -21,8 +21,48 @@
       "request": "*"
     },
     "flow": {
+      "conditions": [
+        {
+          "id": "http_get",
+          "title": {
+            "en": "HTTP Get Response Code"
+          },
+          "args": [
+            {
+              "name": "url",
+              "type": "text",
+              "placeholder": {
+                "en": "http://url/"
+              }
+            },
+            {
+              "name": "status_code",
+              "type": "number",
+              "min": 100,
+              "max": 505,
+              "placeholder": {
+                "en": "200"
+              }
+            }
+          ]
+        }
+      ],
       "actions": [
         {
+          "id": "http_delete",
+          "title": {
+            "en": "HTTP Delete"
+          },
+          "args": [
+            {
+              "name": "url",
+              "type": "text",
+              "placeholder": {
+                "en": "http://url/"
+              }
+            }
+          ]
+        },{
           "id": "http_get",
           "title": {
             "en": "HTTP Get"
@@ -59,7 +99,7 @@
         },{
           "id": "http_put_json",
           "title": {
-            "en": "HTTP Put Json"
+            "en": "HTTP Put JSON"
           },
           "args": [
             {
