@@ -26,12 +26,16 @@ var self = module.exports = {
 		Homey.manager('flow').on('action.http_post_json', function( callback, args ){
 			Homey.log("Http Post action. Passed parameters: ", args);
 			var url = args.url;
-			var data = JSON.parse(args.data);
+			try {
+			   var data = JSON.parse(args.data);
+			catch(error){
+			   return callback(error);
+			}
+			
 			request({
 				url: url,
 				method: "POST",
-				json: true,
-				body: data
+				json: data
 				}, function (error, response, body) {
 					if (!error && response.statusCode == 200) {
 						// ready
@@ -47,7 +51,11 @@ var self = module.exports = {
 		Homey.manager('flow').on('action.http_put_json', function( callback, args ){
 			Homey.log("Http Put action. Passed parameters: ", args);
 			var url = args.url;
-			var data = JSON.parse(args.data);
+			try {
+			   var data = JSON.parse(args.data);
+			catch(error){
+			   return callback(error);
+			}
 			request({
 				url: url,
 				method: "PUT",
