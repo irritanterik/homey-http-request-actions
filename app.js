@@ -101,7 +101,7 @@ function flow_conditions() {
 
 function flow_actions() {
 	// HTTP Delete Request flow action
-	Homey.manager("flow").on("action.http_get", function( callback, args ){
+	Homey.manager("flow").on("action.http_delete", function( callback, args ){
 		Homey.log("HTTP Delete action. Passed parameter: ", args);
 		var url = args.url;
 		request.del({url: url},
