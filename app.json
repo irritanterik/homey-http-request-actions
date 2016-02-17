@@ -16,7 +16,8 @@
      "developers":[
        {
          "name":"El Genio",
-         "website":"https://github.com/elgenioNL"
+         "website":"https://github.com/elgenioNL",
+         "email":"elgenioNL@users.noreply.github.com"
        }
      ]
    },
