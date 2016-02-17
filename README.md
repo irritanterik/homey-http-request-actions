@@ -1,17 +1,18 @@
 # Simple HTTP Connector For Flows
 
-This app let you run HTTP requests from flows. Responses are ignored.
+Start a flow bij a simple HTTP Get request, use HTTP response codes as a flow
+condition or execute a HTTP request as a flow action with this app.
 
-### Trigger cards:
-- Incoming GET request
- - http:\\\\[YourHomeyIP]:9090\\[name]
- - http:\\\\[YourHomeyIP]:9090\\[name]\\[value] if you use the value token
+### Trigger cards
+- Incoming GET requests
+ - ```http://<YourHomeyIP>/api/app/com.internet/<event>```
+ - ```http://<YourHomeyIP>/api/app/com.internet/<event>/<value>``` will put a value in the 'value'-token of this card.
 
-### Condition cards:
+### Condition cards
 - HTTP Get Response: Checks the HTTP response code of a GET Request.
 - HTTP Get JSON Response: Variant with query parameters.
 
-### Action cards:
+### Action cards
 - HTTP Delete
 - HTTP Get
 - HTTP Get JSON (for query parameters like ?a=1&b=zz use {"a": 1, b: "zz"})

@@ -1,47 +1,12 @@
 "use strict";
 
 var request = require("request");
-var express = require("express");
-var port = 9090;
 var last_event = "";
-
-function start_server() {
-	var app = express();
-
-	// listen for event and value
-	app.get("/:event/:value", function (req, res) {
-		var event = req.params.event;
-		var value = req.params.value;
-		last_event = event; // temp until flow object is passed correctly
-		Homey.log("HTTP event/value request received with parameters: ", req.params)
-		Homey.manager("flow").trigger("http_get"
-			,{"value": value}
-			,{"event": event}
-		);
-		res.send("OK")
-  });
-
-	// listen for name only
-	app.get("/:event", function (req, res) {
-		var event = req.params.event;
-		last_event = event; // temp until flow object is passed correctly
-		Homey.log("HTTP event request received with parameters: ", req.params)
-		Homey.manager("flow").trigger("http_get"
-			,{"value": null}
-			,{"event": event}
-		);
-		res.send("OK")
-  });
-
-	var server = app.listen(port, function(){
-		Homey.log("HTTP Api listening at: " + port);
-	});
-} // function start_server() end
 
 function flow_triggers() {
 	// Get Request flow trigger with value
 	Homey.manager("flow").on("trigger.http_get", function( callback, args, state ){
-		Homey.log("in flow trigger.http_get with args and state:", args, state);
+		Homey.log("in flow trigger.http_get with args, state and last_event:", args, state, last_event);
 
 		// change last_event to state.event when flow object is passed correctly
 		if(args.event.toLowerCase() ==  last_event.toLowerCase()){
@@ -208,9 +173,17 @@ function flow_actions() {
 
 var self = module.exports = {
 	init: function () {
-		start_server();
 		flow_triggers();
 		flow_conditions();
 		flow_actions();
 	}
+	, trigger: function(event, value) {
+		last_event = event;
+		Homey.manager("flow").trigger("http_get"
+			,{"value": value}
+			,{"event": event}
+		);
+
+	}
+
 }
