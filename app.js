@@ -120,6 +120,33 @@ function flow_actions() {
 		);
 	});
 
+	// HTTP Post form flow action
+	Homey.manager("flow").on("action.http_post_form", function( callback, args ){
+		Homey.log("HTTP Post form action. Passed parameters: ", args);
+		var url = args.url;
+		try {
+			 var data = JSON.parse(args.data);
+		} catch(error) {
+			 return callback(error);
+		}
+		Homey.log("  JSON parsed data: ", data);
+
+		request({
+			url: url,
+			method: "POST",
+			form: data
+			}, function (error, response, body) {
+				if (!error && response.statusCode == 200) {
+					// ready
+					callback( null, true);
+				} else {
+					Homey.log("  HTTP Post form action. Error in response:", error, response)
+					callback( error );
+				}
+			}
+		);
+	});
+
 	// HTTP Post JSON  Request flow action
 	Homey.manager("flow").on("action.http_post_json", function( callback, args ){
 		Homey.log("HTTP Post action. Passed parameters: ", args);
@@ -129,6 +156,7 @@ function flow_actions() {
 		} catch(error) {
 			 return callback(error);
 		}
+		Homey.log("  JSON parsed data: ", data);
 
 		request({
 			url: url,
@@ -139,7 +167,7 @@ function flow_actions() {
 					// ready
 					callback( null, true);
 				} else {
-					Homey.log("HTTP Post action. Error in response:", error, response)
+					Homey.log("  HTTP Post action. Error in response:", error, response)
 					callback( error );
 				}
 			}
@@ -169,6 +197,29 @@ function flow_actions() {
 			}
 		);
 	});
+
+	// HTTP Socket flow action
+	Homey.manager("flow").on("action.web_socket_send", function( callback, args ){
+		Homey.log("WebSocket Send action. Passed parameters: ", args);
+		var url = args.url;
+	  var data = args.data;
+
+		var WebSocket = require('ws');
+		var ws = new WebSocket(url);
+
+		ws.on('open', function() {
+		  ws.send(data, function(){
+					ws.close();
+					Homey.log("  WebSocket Send action completed.");
+					callback( null, true);
+			});
+		});
+
+		ws.on('error', function(error) {
+			Homey.log("  WebSocket Send action failed:", error);
+			callback(error);
+		});
+	});
 } // function flow_actions() end
 
 var self = module.exports = {
@@ -176,14 +227,12 @@ var self = module.exports = {
 		flow_triggers();
 		flow_conditions();
 		flow_actions();
-	}
-	, trigger: function(event, value) {
-		last_event = event;
+	},
+	trigger: function(event, value) {
+		last_event = event; // ugly global
 		Homey.manager("flow").trigger("http_get"
 			,{"value": value}
 			,{"event": event}
 		);
-
 	}
-
 }

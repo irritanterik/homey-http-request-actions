@@ -1,12 +1,14 @@
 {
    "id":"com.internet",
-   "version":"0.3.0",
+   "version":"0.4.0",
    "compatibility":"*",
    "name":{
-      "en":"HTTP request flow cards"
+      "en":"HTTP request flow cards",
+      "nl":"HTTP request flowkaarten"
    },
    "description":{
-      "en":"HTTP request conditions and actions for flows"
+      "en":"HTTP request trigger, conditions and actions for flows",
+      "nl":"HTTP request triggers, condities en acties voor flows"
    },
    "author":{
       "name":"Erik van Dongen",
@@ -28,8 +30,10 @@
    "category":"internet",
    "dependencies":{
       "request":"*",
-      "express":"^4.13.3"
+      "express":"^4.13.3",
+      "ws":"^1.0.1"
    },
+   "persmissions":[],
    "flow":{
       "triggers":[
          {
@@ -42,7 +46,8 @@
                {
                   "name":"value",
                   "title":{
-                     "en":"value"
+                     "en":"value",
+                     "nl":"waarde"
                   },
                   "example":{
                      "en":"5"
@@ -55,7 +60,7 @@
                   "type":"text",
                   "placeholder":{
                      "en":"Name of the event",
-                     "nl":"Naam van de event"
+                     "nl":"Naam van het event"
                   }
                }
             ]
@@ -65,7 +70,8 @@
          {
             "id":"http_get",
             "title":{
-               "en":"HTTP Get Response"
+               "en":"Get response code is !{{|not}}:",
+               "nl":"Get response code is !{{|niet}}:"
             },
             "args":[
                {
@@ -194,6 +200,28 @@
             ]
          },
          {
+            "id":"http_post_form",
+            "title":{
+               "en":"HTTP Post Form"
+            },
+            "args":[
+               {
+                  "name":"url",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"http://url/"
+                  }
+               },
+               {
+                  "name":"data",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"{}"
+                  }
+               }
+            ]
+         },
+         {
             "id":"http_put_json",
             "title":{
                "en":"HTTP Put JSON"
@@ -211,6 +239,30 @@
                   "type":"text",
                   "placeholder":{
                      "en":"{}"
+                  }
+               }
+            ]
+         },
+         {
+            "id":"web_socket_send",
+            "title":{
+               "en":"WebSocket Send",
+               "nl":"WebSocket verzenden"
+            },
+            "args":[
+               {
+                  "name":"url",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"ws://url:port/"
+                  }
+               },
+               {
+                  "name":"data",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"message",
+                     "nl":"bericht"
                   }
                }
             ]

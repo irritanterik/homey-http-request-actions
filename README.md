@@ -17,7 +17,9 @@ condition or execute a HTTP request as a flow action with this app.
 - HTTP Get
 - HTTP Get JSON (for query parameters like ?a=1&b=zz use {"a": 1, b: "zz"})
 - HTTP Put JSON
-- HTTP Post JSON
+- HTTP Post Form (content-type 'application/x-www-form-urlencoded')
+- HTTP Post JSON (content-type 'application/json')
+- WebSocket Send (message to ws://x.x.x.x:y endpoint)
 
-Passing of a valid JSON string (at least {} ) is obligatory for cards with a JSON parameter.
+Passing a valid JSON string (at least {} ) is obligatory for cards with a JSON parameter.
  Happy hacking!
