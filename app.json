@@ -1,6 +1,6 @@
 {
    "id":"com.internet",
-   "version":"0.4.0",
+   "version":"0.5.0",
    "compatibility":"*",
    "name":{
       "en":"HTTP request flow cards",
@@ -36,11 +36,40 @@
    "persmissions":[],
    "flow":{
       "triggers":[
-         {
-            "id":"http_get",
+        {
+           "id":"http_get",
+           "title":{
+             "en":"Incoming GET request",
+             "nl":"Ontvangen GET request"
+           },
+           "tokens":[
+              {
+                 "name":"value",
+                 "title":{
+                    "en":"value",
+                    "nl":"waarde"
+                 },
+                 "example":{
+                    "en":"5"
+                 }
+              }
+           ],
+           "args":[
+              {
+                 "name":"event",
+                 "type":"text",
+                 "placeholder":{
+                    "en":"Name of the event",
+                    "nl":"Naam van het event"
+                 }
+              }
+           ]
+        },
+        {
+            "id":"http_get_variable_2",
             "title":{
-               "en":"Incoming GET request",
-               "nl":"Ontvangen GET request"
+              "en":"GET variable step 2",
+              "nl":"GET variabele stap 2"
             },
             "tokens":[
                {
@@ -56,11 +85,11 @@
             ],
             "args":[
                {
-                  "name":"event",
+                  "name":"trigger",
                   "type":"text",
                   "placeholder":{
-                     "en":"Name of the event",
-                     "nl":"Naam van het event"
+                     "en":"Trigger from step 1",
+                     "nl":"Trigger from step 1"
                   }
                }
             ]
@@ -173,6 +202,43 @@
                   "type":"text",
                   "placeholder":{
                      "en":"{}"
+                  }
+               }
+            ]
+         },
+         {
+            "id":"http_get_variable_1",
+            "title":{
+               "en":"GET variable step 1",
+               "nl":"GET variabele stap 1"
+            },
+            "args":[
+               {
+                  "name":"url",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"http://url/"
+                  }
+               },
+               {
+                  "name":"data",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"{}"
+                  }
+               },
+               {
+                  "name":"path",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"body"
+                  }
+               },
+               {
+                  "name":"trigger",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"trigger for step 2"
                   }
                }
             ]
