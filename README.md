@@ -37,6 +37,3 @@ When this cards executes succesfull, it will start flows with the 'GET variable 
 #### Note   
   Passing a valid JSON string (at least {} ) is obligatory for cards with a JSON parameter.
     Happy hacking!
-
-#### Todo
- - Refactor to https://www.npmjs.com/package/http.min

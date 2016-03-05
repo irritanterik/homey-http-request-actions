@@ -5,7 +5,10 @@ module.exports = [
         path:			"/:event",
         requires_authorization: false,
         fn: function( callback, args ){
-          Homey.app.trigger(args.params.event, null); //By version 0.8.19 direct call to flow manager and passing state object
+          Homey.manager('flow').trigger('http_get'
+            ,{'value': 'null'}
+            ,{'event': args.params.event}
+          )
           callback( null, "OK");
         }
     },
@@ -15,7 +18,10 @@ module.exports = [
         path:			"/:event/:value",
         requires_authorization: false,
         fn: function( callback, args ){
-          Homey.app.trigger(args.params.event, args.params.value); //By version 0.8.19 direct call to flow manager and passing state object
+          Homey.manager('flow').trigger('http_get'
+            ,{'value': args.params.value}
+            ,{'event': args.params.event}
+          )
           callback( null, "OK");
         }
     }

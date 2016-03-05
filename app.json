@@ -1,7 +1,7 @@
 {
    "id":"com.internet",
-   "version":"0.5.0",
-   "compatibility":"*",
+   "version":"0.5.1",
+   "compatibility":">=0.8.20",
    "name":{
       "en":"HTTP request flow cards",
       "nl":"HTTP request flowkaarten"
