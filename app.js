@@ -122,6 +122,7 @@ function flow_actions() {
 		try {
 			 var data = JSON.parse(args.data)
 		} catch(error) {
+			 console.log(' --> error parsing JSON:', error)
 			 return callback(error)
 		}
 
@@ -150,6 +151,7 @@ function flow_actions() {
 			)
 			callback( null, true)
 		}).catch(function(reason){
+			console.log(' --> error from http.get: ', reason)
 			callback(reason)
 		})
 	})

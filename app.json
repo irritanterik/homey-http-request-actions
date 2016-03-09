@@ -1,6 +1,6 @@
 {
    "id":"com.internet",
-   "version":"0.5.1",
+   "version":"0.5.2",
    "compatibility":">=0.8.20",
    "name":{
       "en":"HTTP request flow cards",
@@ -59,8 +59,8 @@
                  "name":"event",
                  "type":"text",
                  "placeholder":{
-                    "en":"Name of the event",
-                    "nl":"Naam van het event"
+                    "en":"Event name",
+                    "nl":"Event naam"
                  }
               }
            ]
@@ -231,14 +231,15 @@
                   "name":"path",
                   "type":"text",
                   "placeholder":{
-                     "en":"body"
+                     "en":"JSONpath"
                   }
                },
                {
                   "name":"trigger",
                   "type":"text",
                   "placeholder":{
-                     "en":"trigger for step 2"
+                     "en":"trigger for step 2",
+                     "nl":"trigger voor stap 2"
                   }
                }
             ]

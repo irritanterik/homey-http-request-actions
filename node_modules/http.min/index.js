@@ -21,7 +21,9 @@ METHODS.forEach(function (method) {
           merge(options, url.parse(options.uri))
         }
         if (query) {
-          options.path += '?' + querystring.stringify(query)
+          if (querystring.stringify(query) != querystring.stringify({})) {
+            options.path += '?' + querystring.stringify(query)
+          }
         }
       }
       if (data) {
