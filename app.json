@@ -33,7 +33,7 @@
       "jsonpath-plus":"*",
       "ws":"^1.0.1"
    },
-   "persmissions":[],
+   "permissions":[],
    "flow":{
       "triggers":[
         {
