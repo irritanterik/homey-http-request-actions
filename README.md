@@ -20,6 +20,7 @@ condition or execute a HTTP request as a flow action with this app.
 - HTTP Put JSON
 - HTTP Post Form (content-type 'application/x-www-form-urlencoded')
 - HTTP Post JSON (content-type 'application/json')
+- HTTP Geek Request (for real geeks using [node http options](https://nodejs.org/api/http.html#http_http_request_options_callback))
 - WebSocket Send (message to ws://x.x.x.x:y endpoint)
 - GET variable step 1 (read 'get variable and trigger flow')
 

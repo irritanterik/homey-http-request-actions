@@ -1,6 +1,6 @@
 {
    "id":"com.internet",
-   "version":"0.5.2",
+   "version":"0.6.0",
    "compatibility":">=0.8.20",
    "name":{
       "en":"HTTP request flow cards",
@@ -29,8 +29,8 @@
    },
    "category":"internet",
    "dependencies":{
-      "request":"*",
-      "express":"^4.13.3",
+      "http.min":"*",
+      "jsonpath-plus":"*",
       "ws":"^1.0.1"
    },
    "persmissions":[],
@@ -303,6 +303,22 @@
                },
                {
                   "name":"data",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"{}"
+                  }
+               }
+            ]
+         },
+         {
+            "id":"http_request",
+            "title":{
+               "en":"HTTP Geek Request",
+               "nl":"HTTP Geek Request"
+            },
+            "args":[
+               {
+                  "name":"options",
                   "type":"text",
                   "placeholder":{
                      "en":"{}"

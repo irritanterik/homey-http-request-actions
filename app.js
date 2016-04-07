@@ -224,6 +224,28 @@ function flow_actions() {
 		})
 	})
 
+	// HTTP Geek Request flow action
+	Homey.manager('flow').on('action.http_request', function(callback, args){
+		Homey.log('HTTP Geek Request action. Passed parameters: ', args)
+		var method = 'get'
+		try {
+			var options = JSON.parse(args.options)
+		} catch(error){
+			return callback(error)
+		}
+		if (options.method) method = options.method.toLowerCase()
+		http[method](options).then(function(result){
+			if (result.response.statusCode === 200) {
+				callback(null, true)
+			} else {
+				callback(result.response.statusCode)
+			}
+		}).catch(function(reason){
+			Homey.log('  --> error:', reason)
+			callback(reason)
+		})
+	})
+
 	// HTTP Socket flow action
 	Homey.manager('flow').on('action.web_socket_send', function( callback, args ){
 		Homey.log('webSocket Send action. Passed parameters: ', args)
