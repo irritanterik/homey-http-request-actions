@@ -251,7 +251,12 @@ function flow_actions() {
 		Homey.log('webSocket Send action. Passed parameters: ', args)
 		var url = args.url
 	  var data = args.data
-		var ws = new webSocket(url)
+
+		try {
+			var ws = new webSocket(url)
+		} catch(error) {
+			 return callback(error)
+		}
 
 		ws.on('open', function() {
 		  ws.send(data, function(){
@@ -259,9 +264,7 @@ function flow_actions() {
 					Homey.log('  webSocket Send action completed.')
 					callback( null, true)
 			})
-		})
-
-		ws.on('error', function(error) {
+		}).on('error', function(error) {
 			Homey.log('  webSocket Send action failed:', error)
 			callback(error)
 		})
