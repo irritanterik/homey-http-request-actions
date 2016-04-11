@@ -1,0 +1,11 @@
+{
+  "name":"com.internet",
+  "version":"0.6.1",
+  "author":"Erik van Dongen",
+  "license": "ISC",
+  "dependencies":{
+     "http.min":"^1.2.4",
+     "jsonpath-plus":"0.14.0",
+     "ws":"^1.0.1"
+  }
+}

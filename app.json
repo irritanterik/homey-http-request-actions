@@ -1,6 +1,6 @@
 {
    "id":"com.internet",
-   "version":"0.6.0",
+   "version":"0.6.1",
    "compatibility":">=0.8.20",
    "name":{
       "en":"HTTP request flow cards",
@@ -28,11 +28,6 @@
       "small":"./assets/images/small.jpg"
    },
    "category":"internet",
-   "dependencies":{
-      "http.min":"*",
-      "jsonpath-plus":"*",
-      "ws":"^1.0.1"
-   },
    "permissions":[],
    "flow":{
       "triggers":[
