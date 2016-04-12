@@ -1,6 +1,5 @@
 {
-  "name":"com.internet",
-  "version":"0.6.1",
+  "name":"HTTP request flow cards",
   "author":"Erik van Dongen",
   "license": "ISC",
   "dependencies":{
