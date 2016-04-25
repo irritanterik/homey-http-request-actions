@@ -1,6 +1,6 @@
 {
    "id":"com.internet",
-   "version":"0.6.2",
+   "version":"1.0.0",
    "compatibility":">=0.8.20",
    "name":{
       "en":"HTTP request flow cards",
@@ -13,15 +13,6 @@
    "author":{
       "name":"Erik van Dongen",
       "website":"http://github.com/irritanterik/"
-   },
-   "contributors":{
-     "developers":[
-       {
-         "name":"El Genio",
-         "website":"https://github.com/elgenioNL",
-         "email":"elgenioNL@users.noreply.github.com"
-       }
-     ]
    },
    "images":{
       "large":"./assets/images/large.jpg",
