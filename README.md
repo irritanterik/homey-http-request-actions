@@ -7,6 +7,7 @@ condition or execute a HTTP request as a flow action with this app.
 - Incoming GET requests
  - ```http://<YourHomeyIP>/api/app/com.internet/<event>```
  - ```http://<YourHomeyIP>/api/app/com.internet/<event>/<value>``` will put a value in the 'value'-token of this card.
+ - for external access use ```https://<YourId>.homey.athom.com/api/app/com.internet/<event>```
 - GET variable step 2 (read 'get variable and trigger flow')
 
 ### Condition cards
