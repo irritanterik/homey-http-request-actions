@@ -1,0 +1,13 @@
+{
+  "settings": {
+		"title": "HTTP App instellingen",
+    "intro": "Flows kunnen gestart worden met HTTP GET requests door http://[UwHomeyIP]/api/app/com.internet/[event]/[value] aan te roepen. Voor toegang van buiten uw netwerk kan dit via https://[UwId].homey.athom.com/api/app/com.internet/[event]. Beide methoden vereisen standaard authorisatie. Dit kan uitgeschakeld worden voor *beide* methodes door onderstaand vakje te deselecteren.",
+    "fieldAuthorization": "Authorisatie vereist op API",
+    "buttonSave": "Opslaan",
+		"messages": {
+			"busySaving": "Instelling opslaan op Homey...",
+      "errorSaving": "Oeps... Er ging iets fout bij het opslaan van de instellingen",
+      "successSaving": "Instelling opgeslagen. Gewijzigde instellingen hebben pas effect na het herstarten van deze app."
+		}
+  }
+}

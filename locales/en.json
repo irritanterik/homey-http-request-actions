@@ -1,1 +1,13 @@
-{}
+{
+  "settings": {
+    "title": "HTTP App settings",
+		"intro": "Triggering flows with HTTP GET requests can be done by calling http://[YourHomeyIP]/api/app/com.internet/[event]/[value]. For remote access this can be done by calling https://[YourId].homey.athom.com/api/app/com.internet/[event]. Both methods require authorization by default. This can be disabled for *both* methods by unselect the authorization checkbox. Restart this app (on the app-overview) after you have changed settings.",
+    "fieldAuthorization": "Require authorization on API",
+    "buttonSave": "Save",
+		"messages": {
+			"busySaving": "Saving settings to Homey...",
+      "errorSaving": "Oops... Something went wrong saving your settings",
+			"successSaving": "Settings saved successfully. Changed settings will be active after a restart of this app."
+		}
+  }
+}

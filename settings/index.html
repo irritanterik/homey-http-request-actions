@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="text/javascript" src="/manager/webserver/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
+    <link rel="stylesheet" href="css/settings.css">
+   </style>
+  </head>
+  <body>
+    <h1 data-i18n="settings.title"></h1>
+    <fieldset>
+      <p data-i18n="settings.intro"></p>
+      <div>
+        <input id="apiAuthorization" type="checkbox" value="authorization" />
+        <label for="apiAuthorization" data-i18n="settings.fieldAuthorization"></label>
+      </div>
+      <div id="busy" class="busy"><i class="fa fa-cog fa-spin fa-2x fa-fw"></i><span>..</span></div>
+      <div id="error" class="error"><i class="fa fa-times-circle fa-2x fa-fw"></i><span>..</span></div>
+      <div id="success" class="success"><i class="fa fa-check fa-2x fa-fw"></i><span>..</span></div>
+      <button id="saveSettings" class="right" onclick="saveSettings()"><i class="fa fa-save"></i> <span data-i18n="settings.buttonSave">Save</span></button>
+    </fieldset>
+  </body>
+</html>

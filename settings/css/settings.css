@@ -1,0 +1,36 @@
+/* Input form fields */
+.form_label {
+  width: 150px !important;
+  margin-right: 20px;
+  display: inherit;
+}
+.form_input {
+  width: 250px !important;
+  display: inherit;
+}
+select {
+  padding: .5em .75em;
+  vertical-align: middle;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: inherit;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  width:270px !important;
+}
+
+/* Messages */
+/*  based on http://isabelcastillo.com/error-info-messages-css */
+.busy, .info, .success, .warning, .error {
+  margin: 10px 0px;
+  padding:0px;
+}
+.busy     {color: #00529B;background-color: #BDE5F8;}
+.info     {color: #00529B;background-color: #BDE5F8;}
+.success  {color: #4F8A10;background-color: #DFF2BF;}
+.warning  {color: #9F6000;background-color: #FEEFB3;}
+.error    {color: #D8000C;background-color: #FFBABA;}
+.busy i, .info i, .success i, .warning i, .error i {
+  margin:5px 7px;
+  vertical-align:middle;
+}
