@@ -48,5 +48,3 @@ Happy hacking!
 
 ###### Authorization on API calls
   API calls requires header `Authorization` with value `Bearer <token>`, where <token> is your secret token (get it by typing `window.bearer_token` in the chrome console while logged in on your Homey). This can be disabled in the settings screen of this app.
-
-TODO:
