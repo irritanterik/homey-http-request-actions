@@ -1,10 +1,11 @@
 {
-  "name":"HTTP request flow cards",
+  "name":"HTTP-request-flow-cards",
   "author":"Erik van Dongen",
   "license": "ISC",
   "dependencies":{
      "http.min":"^1.2.4",
      "jsonpath-plus":"0.14.0",
-     "ws":"^1.0.1"
+     "ws":"^1.0.1",
+     "xml2js":"^0.4.16"
   }
 }

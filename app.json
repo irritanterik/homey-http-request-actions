@@ -1,13 +1,13 @@
 {
    "id":"com.internet",
-   "version":"1.1.0",
+   "version":"1.2.0",
    "compatibility":">=0.8.20",
    "name":{
       "en":"HTTP request flow cards",
       "nl":"HTTP request flowkaarten"
    },
    "description":{
-      "en":"HTTP request trigger, conditions and actions for flows",
+      "en":"HTTP request triggers, conditions and actions for flows",
       "nl":"HTTP request triggers, condities en acties voor flows"
    },
    "author":{
@@ -299,8 +299,8 @@
          {
             "id":"http_request",
             "title":{
-               "en":"HTTP Geek Request",
-               "nl":"HTTP Geek Request"
+               "en":"DEPRICATED",
+               "nl":"VERVALLEN"
             },
             "args":[
                {

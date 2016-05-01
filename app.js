@@ -3,167 +3,160 @@
 var jsonPath = require('jsonpath-plus')
 var http = require('http.min')
 var WebSocket = require('ws')
+var parseString = require('xml2js').parseString
 
 function isArray (a) { return (!!a) && (a.constructor === Array) }
 function isObject (a) { return (!!a) && (a.constructor === Object) }
+function debugLog (event, data) {
+  if (!data) data = null
+  var time = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1')
+  Homey.manager('api').realtime(event, data)
+  if (data == null) {
+    Homey.log(time, event)
+  } else {
+    Homey.log(time, event, data)
+  }
+} // function debugLog
+
+function mergeOptional (dest, src) {
+  for (var k in src) {
+    if (!(k in dest)) dest[k] = src[k]
+  }
+} // function mergeOptional
+
+function createUrlOptions (input, mergeOptions) {
+  // check for json options vs url
+  var result
+  try {
+    result = JSON.parse(input)
+  } catch (e) {
+    result = {uri: input}
+  }
+  if (mergeOptions) mergeOptional(result, mergeOptions)
+  return result
+} // function createUrlOptions
+
+function genericRequestHelper (flow, defaultMethod, args, mergeOptions, callback) {
+  var method = defaultMethod
+  var urlOptions = createUrlOptions(args.url, mergeOptions)
+  if (urlOptions.method) method = urlOptions.method.toLowerCase()
+  debugLog(flow, {args: args, method: method, urlOptions: urlOptions})
+  http[method](urlOptions).then(function (result) {
+    callback(null, result)
+  }).catch(function (error) {
+    debugLog(flow + ' failed', {error: error, stack: error.stack})
+    callback(error)
+  })
+} // function genericRequestHelper
 
 function flow_triggers () {
   // Get request flow trigger with value
   Homey.manager('flow').on('trigger.http_get', function (callback, args, state) {
-    Homey.log('in flow trigger.http_get with args and state:', args, state)
-    if (args.event.toLowerCase() === state.event.toLowerCase()) {
-      Homey.log('  --> trigger flow!')
-      callback(null, true)
-    } else {
-      Homey.log('  --> do not trigger flow!')
-      callback(null, false)
-    }
+    debugLog('flow trigger.http_get evaluation', {args: args, state: state})
+    callback(null, args.event.toLowerCase() === state.event.toLowerCase())
   })
 
   // Get request flow trigger with value
   Homey.manager('flow').on('trigger.http_get_variable_2', function (callback, args, state) {
-    Homey.log('in flow trigger.http_get_variable_2 with args and state:', args, state)
-    if (args.trigger.toLowerCase() === state.trigger.toLowerCase()) {
-      Homey.log('  --> trigger flow!')
-      callback(null, true)
-    } else {
-      Homey.log('  --> do not trigger flow!')
-      callback(null, false)
-    }
+    debugLog('flow trigger.http_get_variable_2 evaluation', {args: args, state: state})
+    callback(null, args.trigger.toLowerCase() === state.trigger.toLowerCase())
   })
-} // funtion flow_triggers() end
+} // funtion flow_triggers
 
 function flow_conditions () {
   // Get request Response flow condition
   Homey.manager('flow').on('condition.http_get', function (callback, args) {
-    Homey.log('HTTP Get condition. Passed parameters: ', args)
-    http.get(args.url).then(function (result) {
+    genericRequestHelper('condition.http_get', 'get', args, null, function (error, result) {
+      if (error) return callback(error)
       callback(null, result.response.statusCode === args.status_code)
-    }).catch(function (reason) {
-      callback(reason)
     })
   })
 
   // Get request Response (JSON) flow condition
   Homey.manager('flow').on('condition.http_get_json', function (callback, args) {
-    Homey.log('HTTP Get with JSON condition. Passed parameters: ', args)
     try {
       var data = JSON.parse(args.data)
     } catch (error) {
       return callback(error)
     }
-
-    http.get({uri: args.url, query: data}).then(function (result) {
-      callback(null, result.response.statusCode === args.status_code)
-    }).catch(function (reason) {
-      callback(reason)
+    genericRequestHelper('condition.http_get_json', 'get', args, {query: data}, function (error, result) {
+      callback(error, result.response.statusCode === args.status_code)
     })
   })
-} // function flow_conditions() end
+} // function flow_conditions
 
 function flow_actions () {
   // HTTP Delete request flow action
   Homey.manager('flow').on('action.http_delete', function (callback, args) {
-    Homey.log('HTTP Delete action. Passed parameter: ', args)
-    var url = args.url
-    http.delete(url).then(function (result) {
-      Homey.log('  --> response code:', result.response.statusCode)
-      if (result.response.statusCode === 200) {
-        callback(null, true)
-      } else {
-        callback(result.response.statusCode)
-      }
-    }).catch(function (reason) {
-      Homey.log('  --> error:', reason)
-      callback(reason)
+    genericRequestHelper('action.http_delete', 'delete', args, null, function (error, result) {
+      if (error) return callback(error)
+      if (result.response.statusCode !== 200) return callback(result.response.statusCode)
+      callback(null, true)
     })
   })
 
   // HTTP Get request flow action
   Homey.manager('flow').on('action.http_get', function (callback, args) {
-    Homey.log('HTTP Get action. Passed parameter: ', args)
-    http.get(args.url).then(function (result) {
-      if (result.response.statusCode === 200) {
-        callback(null, true)
-      } else {
-        callback(result.response.statusCode)
-      }
-    }).catch(function (reason) {
-      callback(reason)
+    genericRequestHelper('action.http_get', 'get', args, null, function (error, result) {
+      if (error) return callback(error)
+      if (result.response.statusCode !== 200) return callback(result.response.statusCode)
+      callback(null, true)
     })
   })
 
   // HTTP Get JSON request flow action
   Homey.manager('flow').on('action.http_get_json', function (callback, args) {
-    Homey.log('HTTP Get JSON action. Passed parameter: ', args)
     try {
       var data = JSON.parse(args.data)
     } catch (error) {
       return callback(error)
     }
-
-    http.get({uri: args.url, query: data}).then(function (result) {
-      if (result.response.statusCode === 200) {
-        callback(null, true)
-      } else {
-        callback(result.response.statusCode)
-      }
-    }).catch(function (reason) {
-      callback(reason)
+    genericRequestHelper('action.http_get_json', 'get', args, {query: data}, function (error, result) {
+      callback(error, result.response.statusCode === 200)
     })
   })
 
-  // HTTP Get JSON request flow action
+  // HTTP Get JSON or XML request flow action
   Homey.manager('flow').on('action.http_get_variable_1', function (callback, args) {
-    Homey.log('GET variable step 1 action. Passed parameters: ', args)
     try {
       var data = JSON.parse(args.data)
     } catch (error) {
-      console.log(' --> error parsing JSON:', error)
       return callback(error)
     }
-
-    http.get({uri: args.url, query: data, json: true}).then(function (result) {
+    genericRequestHelper('action.http_get_variable_1', 'get', args, {query: data, json: false}, function (error, result) {
+      if (error) return callback(error)
+      try {
+        result.data = JSON.parse(result.data)
+      } catch (e) {
+        debugLog('  --> result is not valid JSON, will try XML now')
+        parseString(result.data, function (error, xml2jsResult) {
+          if (error) {
+            debugLog('  --> result is not valid XML')
+            return callback('invalid json or xml result')
+          }
+          result.data = xml2jsResult
+        })
+      }
+      debugLog('  --> result from request', result.data)
       var variable = jsonPath({json: result.data, path: args.path, wrap: false})
-      console.log('Variable is ', variable)
-      if (variable === null) {
-        console.log('variable === null')
-        callback('Result from jsonPath is null')
-        return
-      }
-      if (isObject(variable)) {
-        console.log('variable is an Object')
-        callback('Result from jsonPath is an Object')
-        return
-      }
-      if (isArray(variable)) {
-        console.log('variable is an Array')
-        callback('Result from jsonPath is an Array')
-        return
-      }
-
-      Homey.manager('flow').trigger('http_get_variable_2',
-        {value: variable},
-        {trigger: args.trigger}
-      )
+      debugLog('  --> variable result', variable)
+      if (variable === null) return callback('Result from jsonPath is null')
+      if (isObject(variable)) return callback('Result from jsonPath is an Object')
+      if (isArray(variable)) return callback('Result from jsonPath is an Array')
+      Homey.manager('flow').trigger('http_get_variable_2', {value: variable}, {trigger: args.trigger})
       callback(null, true)
-    }).catch(function (reason) {
-      console.log(' --> error from http.get: ', reason)
-      callback(reason)
     })
   })
 
   // HTTP Post form flow action
   Homey.manager('flow').on('action.http_post_form', function (callback, args) {
-    Homey.log('HTTP Post form action. Passed parameters: ', args)
     try {
       var data = JSON.parse(args.data)
     } catch (error) {
       return callback(error)
     }
-
-    http.post({uri: args.url, form: data}).then(function (result) {
-      Homey.log('  --> response code:', result.response.statusCode)
+    genericRequestHelper('action.http_post_form', 'post', args, {form: data}, function (error, result) {
+      if (error) return callback(error)
       if (result.response.statusCode === 200 ||
         result.response.statusCode === 201 ||
         result.response.statusCode === 202) {
@@ -171,23 +164,18 @@ function flow_actions () {
       } else {
         callback(result.response.statusCode)
       }
-    }).catch(function (reason) {
-      Homey.log('  --> error:', reason)
-      callback(reason)
     })
   })
 
   // HTTP Post JSON  request flow action
   Homey.manager('flow').on('action.http_post_json', function (callback, args) {
-    Homey.log('HTTP Post action. Passed parameters: ', args)
     try {
       var data = JSON.parse(args.data)
     } catch (error) {
       return callback(error)
     }
-
-    http.post(args.url, data).then(function (result) {
-      Homey.log('  --> response code:', result.response.statusCode)
+    genericRequestHelper('action.http_post_json', 'post', args, {json: data}, function (error, result) {
+      if (error) return callback(error)
       if (result.response.statusCode === 200 ||
         result.response.statusCode === 201 ||
         result.response.statusCode === 202) {
@@ -195,35 +183,29 @@ function flow_actions () {
       } else {
         callback(result.response.statusCode)
       }
-    }).catch(function (reason) {
-      Homey.log('  --> error:', reason)
-      callback(reason)
     })
   })
 
   // HTTP Put request flow action
   Homey.manager('flow').on('action.http_put_json', function (callback, args) {
-    Homey.log('HTTP Put action. Passed parameters: ', args)
     try {
       var data = JSON.parse(args.data)
     } catch (error) {
       return callback(error)
     }
-    http.put(args.url, data).then(function (result) {
+    genericRequestHelper('action.http_put_json', 'put', args, {json: data}, function (error, result) {
+      if (error) return callback(error)
       if (result.response.statusCode === 200) {
         callback(null, true)
       } else {
         callback(result.response.statusCode)
       }
-    }).catch(function (reason) {
-      Homey.log('  --> error:', reason)
-      callback(reason)
     })
   })
 
   // HTTP Geek Request flow action
   Homey.manager('flow').on('action.http_request', function (callback, args) {
-    Homey.log('HTTP Geek Request action. Passed parameters: ', args)
+    debugLog('WARNING: Depricated "HTTP Geek Request" action used. Will be deleted in next version.')
     var method = 'get'
     try {
       var options = JSON.parse(args.options)
@@ -238,31 +220,28 @@ function flow_actions () {
         callback(result.response.statusCode)
       }
     }).catch(function (reason) {
-      Homey.log('  --> error:', reason)
       callback(reason)
     })
   })
 
   // HTTP Socket flow action
   Homey.manager('flow').on('action.web_socket_send', function (callback, args) {
-    Homey.log('webSocket Send action. Passed parameters: ', args)
+    debugLog('flow action.web_socket_send', {args: args})
     var url = args.url
     var data = args.data
-
     try {
       var ws = new WebSocket(url)
     } catch (error) {
       return callback(error)
     }
-
     ws.on('open', function () {
       ws.send(data, function () {
         ws.close()
-        Homey.log('  webSocket Send action completed.')
+        debugLog('  --> webSocket Send action completed')
         callback(null, true)
       })
     }).on('error', function (error) {
-      Homey.log('  webSocket Send action failed:', error)
+      debugLog('  --> webSocket Send action failed', error)
       callback(error)
     })
   })
@@ -270,7 +249,7 @@ function flow_actions () {
 
 var self = module.exports = {
   init: function () {
-    console.log('Api Authorization: ', (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization))
+    debugLog('Api Authorization Required setting', (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization))
     flow_triggers()
     flow_conditions()
     flow_actions()
