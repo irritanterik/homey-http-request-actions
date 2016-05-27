@@ -2,8 +2,9 @@
 [![NPM][npm-image]][npm-url] [![Build status][travis-image]][travis-url] [![Coverage Status][coverage-image]][coverage-url] [![js-standard-style][standard-image]][standard-url] [![Dependencies][david-image]][david-url] [![devDependencies][david-dev-image]][david-dev-url]
 
 Minimal simple HTTP client with promises.  
-Supports common methods GET, POST, PUT, PATCH, DELETE and JSON support.  
-No dependencies, under 100 SLOC.  
+Supports HTTP, HTTPS and common methods GET, POST, PUT, PATCH, DELETE.  
+Includes timeout, query string, form data, JSON helpers.  
+No dependencies, under 100 SLOC.
 
 ## Install
 
@@ -14,7 +15,7 @@ No dependencies, under 100 SLOC.
 ### GET
 ```javascript
 var http = require('http.min')
-http.get('https://httpbin.org/get').then(function (result) {
+http('https://httpbin.org/get').then(function (result) {
   console.log('Code: ' + result.response.statusCode)
   console.log('Response: ' + result.data)
 })
@@ -75,6 +76,8 @@ http.json(options).then(function (data) {
 var http = require('http.min')
 var options = {
   uri: 'https://httpbin.org/post',
+  // timeout in ms
+  timeout: 1000,
   // query string helper
   query: {
     hello: 'test'
@@ -85,6 +88,16 @@ var options = {
   },
   // handle JSON data
   json: true
+  // send JSON data and expect JSON response
+  json: {
+    this: 'is data'
+  },
+  request: function (req) {
+    // hook to manipulate request before being sent
+    // instace of node http.ClientRequest
+    req.setTimeout(2000)
+    req.on('upgrade', ...)
+  }
 }
 http.post(options).then(function (result) {
   console.log('Code: ' + result.response.statusCode)

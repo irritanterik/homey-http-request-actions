@@ -17,9 +17,9 @@ condition or execute HTTP requests as a flow action with this app.
 ### Action cards
 - HTTP Delete
 - HTTP Get
-- HTTP Get JSON (for query parameters like ?a=1&b=zz use `{"a":1,"b":"zz"}`)
+- DEPRICATED: HTTP Get JSON (for query parameters like ?a=1&b=zz use `{"a":1,"b":"zz"}`, will be removed in a next version. Queryparameters can now be used with the HTTP Get card)
 - HTTP Put JSON
-- HTTP Post Form (content-type 'application/x-www-form-urlencoded')
+- HTTP Post Form (content-type 'application/x-www-form-urlencoded', JSON formatted)
 - HTTP Post JSON (content-type 'application/json')
 - WebSocket Send (message to ws://x.x.x.x:y endpoint)
 - GET variable step 1 (read 'get variable and trigger flow')
@@ -38,6 +38,7 @@ When this cards executes succesfull, it will start flows with the 'GET variable 
 
 Happy hacking!
 #### Notes   
+  Requests will time-out after 30 seconds.
   Passing a valid JSON string (at least `{}` ) is obligatory for cards with a JSON parameter.
 
 ###### Advanced HTTP options

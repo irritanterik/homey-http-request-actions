@@ -33,6 +33,7 @@ function createUrlOptions (input, mergeOptions) {
     result = {uri: input}
   }
   if (mergeOptions) mergeOptional(result, mergeOptions)
+  mergeOptional(result, {timeout: 30000})
   return result
 } // function createUrlOptions
 
