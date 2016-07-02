@@ -23,7 +23,7 @@ condition or execute HTTP requests as a flow action with this app.
 - HTTP Post JSON (content-type 'application/json')
 - WebSocket Send (message to ws://x.x.x.x:y endpoint)
 - GET variable step 1 (read 'get variable and trigger flow')
-- GET variable Better Logic (read 'get variable and set Better Logic variable') 
+- GET variable Better Logic (read 'get variable and set Better Logic variable')
 - DEPRICATED: HTTP Geek Request (Will be removed in next version)
 
 ## Get variable and trigger a flow with it
@@ -46,6 +46,8 @@ The action card has three parameters:
  3. Name of Better Logic variable (variables with type string supported)
 
 Happy hacking!
+[Donate with PayPal](PayPal.Me/ErikvanDongen).
+
 #### Notes   
   Requests will time-out after 30 seconds.
   Passing a valid JSON string (at least `{}` ) is obligatory for cards with a JSON parameter.
