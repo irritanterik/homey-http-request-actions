@@ -23,6 +23,7 @@ condition or execute HTTP requests as a flow action with this app.
 - HTTP Post JSON (content-type 'application/json')
 - WebSocket Send (message to ws://x.x.x.x:y endpoint)
 - GET variable step 1 (read 'get variable and trigger flow')
+- GET variable Better Logic (read 'get variable and set Better Logic variable') 
 - DEPRICATED: HTTP Geek Request (Will be removed in next version)
 
 ## Get variable and trigger a flow with it
@@ -35,6 +36,14 @@ The action card has four parameters:
  4. Name of trigger/event for step 2
 
 When this cards executes succesfull, it will start flows with the 'GET variable step 2' trigger card and same trigger/event as step 1. The result of the JSONpath expression is available as a token on the card.
+
+## Get variable and set a Better Logic variable with it
+The action card 'GET variable Better Logic' enables you to get a variable online from a JSON- or XML-formatted response on a get request and set this variable on a string variable in the Better Logic app.
+
+The action card has three parameters:
+ 1. Url (could also be a [node http options](https://nodejs.org/api/http.html#http_http_request_options_callback) object)
+ 2. [JSONpath formatted](http://jsonpath.com/) expression of desired value. The result of this expression must be a single value.
+ 3. Name of Better Logic variable (variables with type string supported)
 
 Happy hacking!
 #### Notes   

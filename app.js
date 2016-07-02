@@ -4,18 +4,25 @@ var jsonPath = require('jsonpath-plus')
 var http = require('http.min')
 var WebSocket = require('ws')
 var parseString = require('xml2js').parseString
+var api = Homey.manager('api')
+var betterLogic = new api.App('net.i-dev.betterlogic')
 
 function isArray (a) { return (!!a) && (a.constructor === Array) }
 function isObject (a) { return (!!a) && (a.constructor === Object) }
+function filterVariable (partialWord, type) {
+  return function (element) {
+    return element.name.toLowerCase().indexOf(partialWord.query.toLowerCase()) > -1 && element.type === type
+  }
+}
 function debugLog (event, data) {
-  if (!data) data = null
   var time = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1')
-  Homey.manager('api').realtime(event, data)
-  if (data == null) {
+  if (!data) {
+    data = null
     Homey.log(time, event)
   } else {
     Homey.log(time, event, data)
   }
+  Homey.manager('api').realtime(event, data)
 } // function debugLog
 
 function mergeOptional (dest, src) {
@@ -49,6 +56,20 @@ function genericRequestHelper (flow, defaultMethod, args, mergeOptions, callback
     callback(error)
   })
 } // function genericRequestHelper
+
+function autocomplete () {
+  Homey.manager('flow').on('action.http_get_variable_BetterLogic.betterVariable.autocomplete', function (callback, value) {
+    debugLog('betterVariable.autocomplete', {value: value})
+    betterLogic.isInstalled(function (err, installed) {
+      if (err) return callback('BetterLogic check failed', null)
+      if (installed !== true) return callback('BetterLogic is not installed', null)
+      betterLogic.get('/ALL', function (err, result) {
+        if (err) return debugLog('Error returning /ALL', {err: err})
+        callback(null, result.filter(filterVariable(value, 'string')))
+      })
+    })
+  })
+} // function autocomplete
 
 function flow_triggers () {
   // Get request flow trigger with value
@@ -145,6 +166,40 @@ function flow_actions () {
       if (isObject(variable)) return callback('Result from jsonPath is an Object')
       if (isArray(variable)) return callback('Result from jsonPath is an Array')
       Homey.manager('flow').trigger('http_get_variable_2', {value: variable}, {trigger: args.trigger})
+      callback(null, true)
+    })
+  })
+
+  // HTTP Get JSON or XML request and put in BetterLogic variable flow action
+  Homey.manager('flow').on('action.http_get_variable_BetterLogic', function (callback, args) {
+    betterLogic.isInstalled(function (err, installed) {
+      if (err) return callback('BetterLogic check failed', null)
+      if (installed !== true) return callback('BetterLogic is not installed', null)
+    })
+
+    genericRequestHelper('action.http_get_variable_BetterLogic', 'get', args, {json: false}, function (error, result) {
+      if (error) return callback(error)
+      try {
+        result.data = JSON.parse(result.data)
+      } catch (e) {
+        debugLog('  --> result is not valid JSON, will try XML now')
+        parseString(result.data, function (error, xml2jsResult) {
+          if (error) {
+            debugLog('  --> result is not valid XML')
+            return callback('invalid json or xml result')
+          }
+          result.data = xml2jsResult
+        })
+      }
+      debugLog('  --> result from request', result.data)
+      var variable = jsonPath({json: result.data, path: args.path, wrap: false})
+      debugLog('  --> variable result', variable)
+      if (variable === null) return callback('Result from jsonPath is null')
+      if (isObject(variable)) return callback('Result from jsonPath is an Object')
+      if (isArray(variable)) return callback('Result from jsonPath is an Array')
+
+      betterLogic.put('/' + args.betterVariable.name + '/' + variable) //, function (err, result) {
+      // no callback on put request available as of yet
       callback(null, true)
     })
   })
@@ -254,5 +309,6 @@ var self = module.exports = {
     flow_triggers()
     flow_conditions()
     flow_actions()
+    autocomplete()
   }
 }

@@ -1,7 +1,7 @@
 {
    "id":"com.internet",
-   "version":"1.2.1",
-   "compatibility":">=0.8.20",
+   "version":"1.3.0",
+   "compatibility":">=0.8.34",
    "name":{
       "en":"HTTP request flow cards",
       "nl":"HTTP request flowkaarten"
@@ -19,7 +19,9 @@
       "small":"./assets/images/small.jpg"
    },
    "category":"tools",
-   "permissions":[],
+   "permissions":[
+     "homey:app:net.i-dev.betterlogic"
+   ],
    "flow":{
       "triggers":[
         {
@@ -226,6 +228,37 @@
                   "placeholder":{
                      "en":"trigger for step 2",
                      "nl":"trigger voor stap 2"
+                  }
+               }
+            ]
+         },
+         {
+            "id":"http_get_variable_BetterLogic",
+            "title":{
+               "en":"GET variable Better Logic",
+               "nl":"GET variabele Better Logic"
+            },
+            "args":[
+               {
+                  "name":"url",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"http://url/"
+                  }
+               },
+               {
+                  "name":"path",
+                  "type":"text",
+                  "placeholder":{
+                     "en":"JSONpath"
+                  }
+               },
+               {
+                  "name":"betterVariable",
+                  "type":"autocomplete",
+                  "placeholder":{
+                     "en":"variable",
+                     "nl":"variabele"
                   }
                }
             ]
