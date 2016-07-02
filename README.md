@@ -46,7 +46,7 @@ The action card has three parameters:
  3. Name of Better Logic variable (variables with type string supported)
 
 Happy hacking!
-[Donate with PayPal](PayPal.Me/ErikvanDongen).
+[Donate with PayPal](http://PayPal.Me/ErikvanDongen).
 
 #### Notes   
   Requests will time-out after 30 seconds.
