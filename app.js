@@ -147,17 +147,19 @@ function flow_actions () {
     }
     genericRequestHelper('action.http_get_variable_1', 'get', args, {query: data, json: false}, function (error, result) {
       if (error) return callback(error)
-      try {
-        result.data = JSON.parse(result.data)
-      } catch (e) {
-        debugLog('  --> result is not valid JSON, will try XML now')
-        parseString(result.data, function (error, xml2jsResult) {
-          if (error) {
-            debugLog('  --> result is not valid XML')
-            return callback('invalid json or xml result')
-          }
-          result.data = xml2jsResult
-        })
+      if (typeof result.data !== 'object') {
+        try {
+          result.data = JSON.parse(result.data)
+        } catch (e) {
+          debugLog('  --> result is not valid JSON, will try XML now')
+          parseString(result.data, function (error, xml2jsResult) {
+            if (error) {
+              debugLog('  --> result is not valid XML')
+              return callback('invalid json or xml result')
+            }
+            result.data = xml2jsResult
+          })
+        }
       }
       debugLog('  --> result from request', result.data)
       var variable = jsonPath({json: result.data, path: args.path, wrap: false})
@@ -179,18 +181,21 @@ function flow_actions () {
 
     genericRequestHelper('action.http_get_variable_BetterLogic', 'get', args, {json: false}, function (error, result) {
       if (error) return callback(error)
-      try {
-        result.data = JSON.parse(result.data)
-      } catch (e) {
-        debugLog('  --> result is not valid JSON, will try XML now')
-        parseString(result.data, function (error, xml2jsResult) {
-          if (error) {
-            debugLog('  --> result is not valid XML')
-            return callback('invalid json or xml result')
-          }
-          result.data = xml2jsResult
-        })
+      if (typeof result.data !== 'object') {
+        try {
+          result.data = JSON.parse(result.data)
+        } catch (e) {
+          debugLog('  --> result is not valid JSON, will try XML now', result.data)
+          parseString(result.data, function (error, xml2jsResult) {
+            if (error) {
+              debugLog('  --> result is not valid XML')
+              return callback('invalid json or xml result')
+            }
+            result.data = xml2jsResult
+          })
+        }
       }
+
       debugLog('  --> result from request', result.data)
       var variable = jsonPath({json: result.data, path: args.path, wrap: false})
       debugLog('  --> variable result', variable)
