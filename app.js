@@ -203,7 +203,7 @@ function flow_actions () {
       if (isObject(variable)) return callback('Result from jsonPath is an Object')
       if (isArray(variable)) return callback('Result from jsonPath is an Array')
 
-      betterLogic.put('/' + args.betterVariable.name + '/' + variable) //, function (err, result) {
+      betterLogic.put('/' + args.betterVariable.name + '/' + escape(variable)) //, function (err, result) {
       // no callback on put request available as of yet
       callback(null, true)
     })
