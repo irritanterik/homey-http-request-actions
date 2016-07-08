@@ -202,9 +202,8 @@ function flow_actions () {
       if (variable === null) return callback('Result from jsonPath is null')
       if (isObject(variable)) return callback('Result from jsonPath is an Object')
       if (isArray(variable)) return callback('Result from jsonPath is an Array')
-      variable = escape(variable) // .replace("\\", " ")
-
-console.log('/' + args.betterVariable.name + '/' + variable)
+      variable = escape(variable).replace(/\//g, '%2F');
+      debugLog('  --> variable result formatted', variable)
       betterLogic.put('/' + args.betterVariable.name + '/' + variable) //, function (err, result) {
       // no callback on put request available as of yet
       callback(null, true)
