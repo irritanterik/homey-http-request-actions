@@ -9,9 +9,9 @@ var betterLogic = new api.App('net.i-dev.betterlogic')
 
 function isArray (a) { return (!!a) && (a.constructor === Array) }
 function isObject (a) { return (!!a) && (a.constructor === Object) }
-function filterVariable (partialWord, type) {
+function filterSupportedVariables (partialWord) {
   return function (element) {
-    return element.name.toLowerCase().indexOf(partialWord.query.toLowerCase()) > -1 && element.type === type
+    return element.name.toLowerCase().indexOf(partialWord.query.toLowerCase()) > -1 && (element.type === 'string' || element.type === 'number')
   }
 }
 function debugLog (event, data) {
@@ -65,7 +65,7 @@ function autocomplete () {
       if (installed !== true) return callback('BetterLogic is not installed', null)
       betterLogic.get('/ALL', function (err, result) {
         if (err) return debugLog('Error returning /ALL', {err: err})
-        callback(null, result.filter(filterVariable(value, 'string')))
+        callback(null, result.filter(filterSupportedVariables(value)))
       })
     })
   })
@@ -199,14 +199,16 @@ function flow_actions () {
       debugLog('  --> result from request', result.data)
       var variable = jsonPath({json: result.data, path: args.path, wrap: false})
       debugLog('  --> variable result', variable)
+      if (!variable) return callback('No result from jsonPath')
       if (variable === null) return callback('Result from jsonPath is null')
       if (isObject(variable)) return callback('Result from jsonPath is an Object')
       if (isArray(variable)) return callback('Result from jsonPath is an Array')
       variable = escape(variable).replace(/\//g, '%2F');
       debugLog('  --> variable result formatted', variable)
-      betterLogic.put('/' + args.betterVariable.name + '/' + variable) //, function (err, result) {
-      // no callback on put request available as of yet
-      callback(null, true)
+      betterLogic.put('/' + args.betterVariable.name + '/' + variable) //, {}, function (err, result) {
+        // if (err) return callback(err)
+        callback(null, true)
+      // })
     })
   })
 
