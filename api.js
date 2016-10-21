@@ -15,7 +15,7 @@ module.exports = [
   }, {
     description: 'HTTP Get trigger card with value',
     method: 'GET',
-    path:	'/:event/:value',
+    path: '/:event/:value',
     requires_authorization: (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization),
     fn: function (callback, args) {
       Homey.manager('flow').trigger('http_get',
