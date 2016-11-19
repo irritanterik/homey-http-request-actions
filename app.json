@@ -264,6 +264,28 @@
         ]
       },
       {
+        "id":"http_post_xml",
+        "title":{
+          "en":"HTTP Post XML"
+        },
+        "args":[
+          {
+            "name":"url",
+            "type":"text",
+            "placeholder":{
+              "en":"http://url/"
+            }
+          },
+          {
+            "name":"data",
+            "type":"text",
+            "placeholder":{
+              "en":"{}"
+            }
+          }
+        ]
+      },
+      {
         "id":"http_post_json",
         "title":{
           "en":"HTTP Post JSON"
