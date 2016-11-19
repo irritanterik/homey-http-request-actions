@@ -21,6 +21,7 @@ condition or execute HTTP requests as a flow action with this app.
 - HTTP Put JSON
 - HTTP Post Form (content-type 'application/x-www-form-urlencoded', JSON formatted)
 - HTTP Post JSON (content-type 'application/json')
+- HTTP Post XML (content-type 'application/xml')
 - WebSocket Send (message to ws://x.x.x.x:y endpoint)
 - GET variable step 1 (read 'get variable and trigger flow')
 - GET variable Better Logic (read 'get variable and set Better Logic variable')
