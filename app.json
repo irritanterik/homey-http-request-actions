@@ -1,6 +1,6 @@
 {
   "id":"com.internet",
-  "version":"1.3.4",
+  "version":"1.3.5",
   "compatibility":">=0.10.0",
   "name":{
     "en":"HTTP request flow cards",
@@ -259,6 +259,28 @@
             "placeholder":{
               "en":"variable",
               "nl":"variabele"
+            }
+          }
+        ]
+      },
+      {
+        "id":"http_post_xml",
+        "title":{
+          "en":"HTTP Post XML"
+        },
+        "args":[
+          {
+            "name":"url",
+            "type":"text",
+            "placeholder":{
+              "en":"http://url/"
+            }
+          },
+          {
+            "name":"data",
+            "type":"text",
+            "placeholder":{
+              "en":"{}"
             }
           }
         ]
