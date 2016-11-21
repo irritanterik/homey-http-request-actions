@@ -24,8 +24,7 @@
   ],
   "flow":{
     "triggers":[
-      {
-        "id":"http_get",
+      { "id":"http_get",
         "title":{
           "en":"Incoming GET request",
           "nl":"Ontvangen GET request"
@@ -53,8 +52,7 @@
           }
         ]
       },
-      {
-        "id":"http_get_variable_2",
+      { "id":"http_get_variable_2",
         "title":{
           "en":"GET variable step 2",
           "nl":"GET variabele stap 2"
@@ -84,8 +82,7 @@
       }
     ],
     "conditions":[
-      {
-        "id":"http_get",
+      { "id":"http_get",
         "title":{
           "en":"Get response code is !{{|not}}:",
           "nl":"Get response code is !{{|niet}}:"
@@ -109,8 +106,7 @@
           }
         ]
       },
-      {
-        "id":"http_get_json",
+      { "id":"http_get_json",
         "title":{
           "en":"HTTP Get Response (JSON)"
         },
@@ -139,11 +135,47 @@
             }
           }
         ]
+      },
+      { "id":"http_get_variable",
+        "title":{
+          "en":"Variable is !{{|not}}",
+          "nl":"Variabele is !{{|ongelijk}}"
+        },
+        "args":[
+          {
+            "name":"url",
+            "type":"text",
+            "placeholder":{
+              "en":"http://url/"
+            }
+          },
+          {
+            "name":"data",
+            "type":"text",
+            "placeholder":{
+              "en":"{}"
+            }
+          },
+          {
+            "name":"path",
+            "type":"text",
+            "placeholder":{
+              "en":"JSONpath"
+            }
+          },
+          {
+            "name":"condition",
+            "type":"text",
+            "placeholder":{
+              "en":"condition",
+              "nl":"waarde"
+            }
+          }
+        ]
       }
     ],
     "actions":[
-      {
-        "id":"http_delete",
+      { "id":"http_delete",
         "title":{
           "en":"HTTP Delete"
         },
@@ -157,8 +189,7 @@
           }
         ]
       },
-      {
-        "id":"http_get",
+      { "id":"http_get",
         "title":{
           "en":"HTTP Get"
         },
@@ -172,8 +203,7 @@
           }
         ]
       },
-      {
-        "id":"http_get_json",
+      { "id":"http_get_json",
         "title":{
           "en":"HTTP Get JSON"
         },
@@ -194,8 +224,7 @@
           }
         ]
       },
-      {
-        "id":"http_get_variable_1",
+      { "id":"http_get_variable_1",
         "title":{
           "en":"GET variable step 1",
           "nl":"GET variabele stap 1"
@@ -232,8 +261,7 @@
           }
         ]
       },
-      {
-        "id":"http_get_variable_BetterLogic",
+      { "id":"http_get_variable_BetterLogic",
         "title":{
           "en":"GET variable Better Logic",
           "nl":"GET variabele Better Logic"
@@ -263,8 +291,7 @@
           }
         ]
       },
-      {
-        "id":"http_post_json",
+      { "id":"http_post_json",
         "title":{
           "en":"HTTP Post JSON"
         },
@@ -285,8 +312,7 @@
           }
         ]
       },
-      {
-        "id":"http_post_form",
+      { "id":"http_post_form",
         "title":{
           "en":"HTTP Post Form"
         },
@@ -307,8 +333,7 @@
           }
         ]
       },
-      {
-        "id":"http_put_json",
+      { "id":"http_put_json",
         "title":{
           "en":"HTTP Put JSON"
         },
@@ -329,8 +354,7 @@
           }
         ]
       },
-      {
-        "id":"http_request",
+      { "id":"http_request",
         "title":{
           "en":"DEPRICATED",
           "nl":"VERVALLEN"
@@ -345,8 +369,7 @@
           }
         ]
       },
-      {
-        "id":"web_socket_send",
+      { "id":"web_socket_send",
         "title":{
           "en":"WebSocket Send",
           "nl":"WebSocket verzenden"

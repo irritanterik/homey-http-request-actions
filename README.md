@@ -11,8 +11,9 @@ condition or execute HTTP requests as a flow action with this app.
 - GET variable step 2 (read 'get variable and trigger flow')
 
 ### Condition cards
-- HTTP Get Response: Checks the HTTP response code of a GET Request.
-- HTTP Get JSON Response: Variant with query parameters.
+- Get Response: Checks the HTTP response code of a GET Request.
+- Variable condition (based on 'get variable and trigger flow')
+- Get JSON Response: Variant with query parameters.
 
 ### Action cards
 - HTTP Delete
