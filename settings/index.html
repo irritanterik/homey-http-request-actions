@@ -8,16 +8,35 @@
   </head>
   <body>
     <h1 data-i18n="settings.title"></h1>
+    <div id="busy" class="busy"><i class="fa fa-cog fa-spin fa-2x fa-fw"></i><span>..</span></div>
+    <div id="error" class="error"><i class="fa fa-times-circle fa-2x fa-fw"></i><span>..</span></div>
+    <div id="success" class="success"><i class="fa fa-check fa-2x fa-fw"></i><span>..</span></div>
     <fieldset>
-      <p data-i18n="settings.intro"></p>
+      <h2 data-i18n="settings.authorization.title">Authorization</h2>
+      <p data-i18n="settings.authorization.intro"></p>
       <div>
-        <input id="apiAuthorization" type="checkbox" value="authorization" />
-        <label for="apiAuthorization" data-i18n="settings.fieldAuthorization"></label>
+        <input id="apiAuthorization" type="checkbox" onChange="saveApiAuthorization()" value="authorization" />
+        <label for="apiAuthorization" data-i18n="settings.authorization.fieldAuthorization"></label>
       </div>
-      <div id="busy" class="busy"><i class="fa fa-cog fa-spin fa-2x fa-fw"></i><span>..</span></div>
-      <div id="error" class="error"><i class="fa fa-times-circle fa-2x fa-fw"></i><span>..</span></div>
-      <div id="success" class="success"><i class="fa fa-check fa-2x fa-fw"></i><span>..</span></div>
-      <button id="saveSettings" class="right" onclick="saveSettings()"><i class="fa fa-save"></i> <span data-i18n="settings.buttonSave">Save</span></button>
+      <br />
+      <h2 data-i18n="settings.whitelist.title">Whitelist</h2>
+      <p data-i18n="settings.whitelist.intro"></p>
+      <div>
+        <table id="whitelist" class="whitelist">
+          <tr>
+            <th class="entry" data-i18n="settings.whitelist.headerIp"></th>
+            <th class="entry"></th>
+          </tr>
+          <tr id="template" data="ip">
+            <td class="entry"><span class="code"></span></td>
+            <td class="entry"><button data="del_btn"><i class="fa fa-trash-o"></i></button></td>
+          </tr>
+          <tr id="newIpRow">
+            <td class="entry"><input type="text" id="newIp" class="code"></td>
+            <td class="entry"><button id="addIp" onClick="addIp()"><i class="fa fa-plus"></i></button></td>
+          </tr>
+        </table>
+      </div>
     </fieldset>
   </body>
 </html>

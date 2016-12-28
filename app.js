@@ -8,7 +8,7 @@ var util = require('./lib/util.js')
 
 module.exports = {
   init: function () {
-    util.debugLog('Api Authorization Required setting', (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization))
+    util.debugLog('Api Authorization Required setting', {value: (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization)})
 
     flowTriggers.init()
     flowConditions.init()

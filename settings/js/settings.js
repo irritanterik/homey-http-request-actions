@@ -1,4 +1,6 @@
 /* global Homey, $, __ */
+var whitelist = []
+
 function onHomeyReady () {
   initSettings()
   Homey.ready()
@@ -8,7 +10,53 @@ function initSettings () {
   clearBusy()
   clearError()
   clearSuccess()
+  $('#template').hide()
+  $('#newIp').change(function () {
+    typeIp()
+  })
+  loadSettings()
+}
 
+function typeIp () {
+  var typed = $('#newIp').val()
+  $('#newIp').val(typed.split('.').map(Number).join('.').replace(/NaN/g, '0'))
+}
+
+function addIp () {
+  var typed = $('#newIp').val()
+  var matched = typed.match(/^(([1-9]?\d|1\d\d|2[0-5][0-5]|2[0-4]\d)\.){3}([1-9]?\d|1\d\d|2[0-5][0-5]|2[0-4]\d)$/g)
+  if (!matched) return showError(__('settings.messages.errorIpInvalid'), 3000)
+  var ip = matched[0]
+  if (whitelist.indexOf(ip) !== -1) return showError(__('settings.messages.errorIpDuplicate'), 3000)
+  $('#newIp').val('')
+  $(`[data-ip]`).remove()
+  whitelist.push(ip)
+  whitelist.sort(sortIp).forEach(addIpEntry)
+  saveWhitelist()
+  showSuccess(__('settings.messages.successSaving'), 1500)
+}
+
+function sortIp (a, b) {
+  return a.split('.').map(x => ('000' + x).slice(-3)).join() <
+    b.split('.').map(x => ('000' + x).slice(-3)).join() ? -1 : 1
+}
+
+function addIpEntry (ip) {
+  var newRow = $('#template').clone()
+  newRow.attr('data-ip', ip)
+  newRow.find('.code').html(ip)
+  newRow.find('[data="del_btn"]').attr('onClick', `delIp('${ip}')`)
+  newRow.insertBefore('#newIpRow').show()
+}
+
+function delIp (ip) {
+  $(`[data-ip="${ip}"]`).remove()
+  var delIndex = whitelist.indexOf(ip)
+  whitelist.splice(delIndex, 1)
+  saveWhitelist()
+}
+
+function loadSettings () {
   Homey.get('httpSettings', function (error, currentHttpSettings) {
     if (error) return console.error(error)
     if (currentHttpSettings != null) {
@@ -17,21 +65,29 @@ function initSettings () {
       $('#apiAuthorization').prop('checked', true)
     }
   })
+
+  Homey.get('httpWhitelist', function (error, currentWhitelist) {
+    if (error) return console.error(error)
+    whitelist = currentWhitelist || []
+    whitelist.sort(sortIp).forEach(addIpEntry)
+  })
 }
 
-function saveSettings () {
+function saveWhitelist () {
+  Homey.set('httpWhitelist', whitelist, function (error, settings) {
+    if (error) { return showError(__('settings.messages.errorSaving')) }
+    showSuccess(__('settings.messages.successSaving'), 3000)
+  })
+}
+
+function saveApiAuthorization () {
   var currentHttpSettings = {
     apiAuthorization: $('#apiAuthorization').prop('checked')
   }
-  $('#saveSettings').prop('disabled', true)
-  showBusy(__('settings.messages.busySaving'))
-  setTimeout(function () {
-    Homey.set('httpSettings', currentHttpSettings, function (error, settings) {
-      $('#saveSettings').prop('disabled', false)
-      if (error) { return showError(__('settings.messages.errorSaving')) }
-      showSuccess(__('settings.messages.successSaving'), 3000)
-    })
-  }, 2000)
+  Homey.set('httpSettings', currentHttpSettings, function (error, settings) {
+    if (error) { return showError(__('settings.messages.errorSaving')) }
+    showSuccess(__('settings.messages.successSavingRestart'), 5000)
+  })
 }
 
 function clearBusy () { $('#busy').hide() }

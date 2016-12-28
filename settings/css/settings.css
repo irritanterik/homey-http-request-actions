@@ -1,4 +1,9 @@
 /* Input form fields */
+
+.code {
+  font-family: monospace;
+}
+
 .form_label {
   width: 150px !important;
   margin-right: 20px;
@@ -8,6 +13,7 @@
   width: 250px !important;
   display: inherit;
 }
+
 select {
   padding: .5em .75em;
   vertical-align: middle;
@@ -21,9 +27,17 @@ select {
 
 /* Messages */
 /*  based on http://isabelcastillo.com/error-info-messages-css */
+body{
+  position: relative;
+}
+
 .busy, .info, .success, .warning, .error {
-  margin: 10px 0px;
-  padding:0px;
+  position: absolute;
+  top: 1;
+  width: 100%;
+  z-index: 10;
+  margin: 0px;
+  padding: 0px;
 }
 .busy     {color: #00529B;background-color: #BDE5F8;}
 .info     {color: #00529B;background-color: #BDE5F8;}
@@ -33,4 +47,18 @@ select {
 .busy i, .info i, .success i, .warning i, .error i {
   margin:5px 7px;
   vertical-align:middle;
+}
+
+/* IP-table */
+table#whitelist {
+  margin-left: 15px;
+}
+table#whitelist tr th.entry,
+table#whitelist tr td.entry {
+  border-top: 1px solid #ddd;
+  vertical-align: middle;
+  padding: 3px;
+  font-size:12px;
+  white-space: normal;
+  word-break: break-all;
 }

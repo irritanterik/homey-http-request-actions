@@ -8,7 +8,8 @@ condition or execute HTTP requests as a flow action with this app.
  - `http://<YourHomeyIP>/api/app/com.internet/<event>`
  - `http://<YourHomeyIP>/api/app/com.internet/<event>/<value>` will put a value in the 'value'-token of this card.
  - for external access use `https://<YourId>.homey.athom.com/api/app/com.internet/<event>`
-- GET variable step 2 (read 'get variable and trigger flow')
+ - allow unauthorized request from local IPs based on the whitelist setting via whitelisted endpoints: `http://<YourHomeyIP>/api/app/com.internet/whitelist/<event>` and `http://<YourHomeyIP>/api/app/com.internet/whitelist/<event>/<value>`
+ - GET variable step 2 (read 'get variable and trigger flow')
 
 ### Condition cards
 - Get Response: Checks the HTTP response code of a GET Request.
