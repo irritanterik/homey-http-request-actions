@@ -36,6 +36,7 @@
               "en":"value",
               "nl":"waarde"
             },
+            "type":"string",
             "example":{
               "en":"5"
             }
@@ -64,6 +65,7 @@
               "en":"value",
               "nl":"waarde"
             },
+            "type":"string",
             "example":{
               "en":"5"
             }
@@ -76,6 +78,34 @@
             "placeholder":{
               "en":"Trigger from step 1",
               "nl":"Trigger from step 1"
+            }
+          }
+        ]
+      },
+      { "id":"http_post_variable",
+        "title":{
+          "en":"Incoming POST",
+          "nl":"Ontvangen POST"
+        },
+        "tokens":[
+          {
+            "name":"json",
+            "title":{
+              "en":"JSON"
+            },
+            "type":"string",
+            "example":{
+              "en":"{\"a\":1,\"b\":\"some text\"}"
+            }
+          }
+        ],
+        "args":[
+          {
+            "name":"event",
+            "type":"text",
+            "placeholder":{
+              "en":"Event name",
+              "nl":"Event naam"
             }
           }
         ]
@@ -161,6 +191,30 @@
             "type":"text",
             "placeholder":{
               "en":"JSONpath"
+            }
+          },
+          {
+            "name":"condition",
+            "type":"text",
+            "placeholder":{
+              "en":"condition",
+              "nl":"waarde"
+            }
+          }
+        ]
+      },
+      { "id":"json_evaluate",
+        "title":{
+          "en":"JSONpath is !{{|not}}",
+          "nl":"JSONpath is !{{|niet}}"
+        },
+        "droptoken":["string"],
+        "args":[
+          {
+            "name":"path",
+            "type":"text",
+            "placeholder":{
+              "en":"$."
             }
           },
           {
@@ -365,6 +419,53 @@
             "type":"text",
             "placeholder":{
               "en":"{}"
+            }
+          }
+        ]
+      },
+      { "id":"json_evaluate_variable_BetterLogic",
+        "title":{
+          "en":"JSONpath Better Logic"
+        },
+        "droptoken":["string"],
+        "args":[
+          {
+            "name":"path",
+            "type":"text",
+            "placeholder":{
+              "en":"$."
+            }
+          },
+          {
+            "name":"betterVariable",
+            "type":"autocomplete",
+            "placeholder":{
+              "en":"variable",
+              "nl":"variabele"
+            }
+          }
+        ]
+      },
+      { "id":"json_evaluate_variable_trigger",
+        "title":{
+          "en":"JSONpath step 1",
+          "nl":"JSONpath stap 1"
+        },
+        "droptoken":["string"],
+        "args":[
+          {
+            "name":"path",
+            "type":"text",
+            "placeholder":{
+              "en":"$."
+            }
+          },
+          {
+            "name":"trigger",
+            "type":"text",
+            "placeholder":{
+              "en":"trigger for step 2",
+              "nl":"trigger voor stap 2"
             }
           }
         ]

@@ -9,24 +9,29 @@ condition or execute HTTP requests as a flow action with this app.
  - `http://<YourHomeyIP>/api/app/com.internet/<event>/<value>` will put a value in the 'value'-token of this card.
  - for external access use `https://<YourId>.homey.athom.com/api/app/com.internet/<event>`
  - allow unauthorized request from local IPs based on the whitelist setting via whitelisted endpoints: `http://<YourHomeyIP>/api/app/com.internet/whitelist/<event>` and `http://<YourHomeyIP>/api/app/com.internet/whitelist/<event>/<value>`
- - GET variable step 2 (read 'get variable and trigger flow')
+- GET variable step 2 (read 'get variable and trigger flow')
+- Incoming POST request  
 
 ### Condition cards
 - Get Response: Checks the HTTP response code of a GET Request.
-- Variable condition (based on 'get variable and trigger flow')
-- Get JSON Response: Variant with query parameters.
+- Get Response JSON: Variant with query parameters.
+- Variable condition (use parameters as with 'get variable and trigger flow')
+- JSON path equation: check value, to combine with POST trigger
 
 ### Action cards
 - HTTP Delete
 - HTTP Get
-- DEPRICATED: HTTP Get JSON (for query parameters like ?a=1&b=zz use `{"a":1,"b":"zz"}`, will be removed in a next version. Queryparameters can now be used with the HTTP Get card)
+- HTTP Get JSON (for query parameters like ?a=1&b=zz use `{"a":1,"b":"zz"}`
 - HTTP Put JSON
 - HTTP Post Form (content-type 'application/x-www-form-urlencoded', JSON formatted)
 - HTTP Post JSON (content-type 'application/json')
 - WebSocket Send (message to ws://x.x.x.x:y endpoint)
 - GET variable step 1 (read 'get variable and trigger flow')
 - GET variable Better Logic (read 'get variable and set Better Logic variable')
+- JSON path Better Logic: to combine with POST trigger
+- JSON path variable step 1: to combine with POST trigger and 'GET variable step 2' trigger
 - DEPRICATED: HTTP Geek Request (Will be removed in next version)
+
 
 ## Get variable and trigger a flow with it
 The paired action and trigger cards GET variable step 1/2 enables you to get a value from any JSON-formatted or XML-formatted get response and start a flow with the retrieved value as a token.
