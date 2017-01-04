@@ -3,7 +3,9 @@ Start a flow with a simple HTTP Get request, use HTTP response codes as a flow
 condition or execute HTTP requests as a flow action with this app.
 
 Happy hacking!  
-[Donate with PayPal](http://PayPal.Me/ErikvanDongen)
+
+If you like the app, buy me a beer!  
+[![Paypal beer button](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-pill-paypal-34px.png)](http://PayPal.Me/ErikvanDongen)
 
 ### Trigger cards
 **Incoming GET**  (*T20*)  
