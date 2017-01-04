@@ -1,70 +1,99 @@
 # Simple HTTP Connector For Flows
-
 Start a flow with a simple HTTP Get request, use HTTP response codes as a flow
 condition or execute HTTP requests as a flow action with this app.
 
+Happy hacking!  
+[Donate with PayPal](http://PayPal.Me/ErikvanDongen)
+
 ### Trigger cards
-- Incoming GET requests
- - `http://<YourHomeyIP>/api/app/com.internet/<event>`
- - `http://<YourHomeyIP>/api/app/com.internet/<event>/<value>` will put a value in the 'value'-token of this card.
- - for external access use `https://<YourId>.homey.athom.com/api/app/com.internet/<event>`
- - allow unauthorized request from local IPs based on the whitelist setting via whitelisted endpoints: `http://<YourHomeyIP>/api/app/com.internet/whitelist/<event>` and `http://<YourHomeyIP>/api/app/com.internet/whitelist/<event>/<value>`
-- GET variable step 2 (read 'get variable and trigger flow')
-- Incoming POST request  
+**Incoming GET**  (*T20*)  
+Trigger a flow by sending a GET request to one of the next API-endpoints:
+- `http://<LocalIP>/api/app/com.internet/:event:`
+- `http://<LocalIP>/api/app/com.internet/whitelist/:event:`
+- `https://<AthomCloudId>.homey.athom.com/api/app/com.internet/:event:`
+
+Add `/:value:` if you want to pass a value to the trigger card, this will make it available in the 'value'-token. All values will be defined as strings.
+
+Configure your authorization and whitelists preferences on the settings page.
+
+Example: `http://192.168.0.100/api/app/com.internet/whitelist/externallights/on`
+
+**Incoming POST** (*T30*)  
+Trigger a flow by sending a POST request to one of the API-endpoints a specified above. The posted body will be available in the 'JSON'-token. This token can be used on cards *C80*, *A80* and *A81*.
+
+**JSONpath result** (*T80*)  
+Trigger a flow from cards *A22* and *A81* by using the same value in the 'trigger'-field.
 
 ### Condition cards
-- Get Response: Checks the HTTP response code of a GET Request.
-- Get Response JSON: Variant with query parameters.
-- Variable condition (use parameters as with 'get variable and trigger flow')
-- JSON path equation: check value, to combine with POST trigger
+**GET code equation** (*C20*)  
+Checks the HTTP response code of a GET request.
+
+**GET (query) code equation** (*C21*)  
+Checks the HTTP response code of a GET request. Specify query parameters in JSON format.
+
+**GET JSONpath equation** (*C22*)  
+Extract and check a specific value from a JSON or XML formatted GET response. This card expects a JSONpath expression.
+
+**JSONpath equation** (*C80*)  
+Extract and check a specific value from the JSON token available on card *T30*.
 
 ### Action cards
-- HTTP Delete
-- HTTP Get
-- HTTP Get JSON (for query parameters like ?a=1&b=zz use `{"a":1,"b":"zz"}`
-- HTTP Put JSON
-- HTTP Post Form (content-type 'application/x-www-form-urlencoded', JSON formatted)
-- HTTP Post JSON (content-type 'application/json')
-- HTTP Post XML (content-type 'application/xml')
-- WebSocket Send (message to ws://x.x.x.x:y endpoint)
-- GET variable step 1 (read 'get variable and trigger flow')
-- GET variable Better Logic (read 'get variable and set Better Logic variable')
-- JSON path Better Logic: to combine with POST trigger
-- JSON path variable step 1: to combine with POST trigger and 'GET variable step 2' trigger
-- DEPRICATED: HTTP Geek Request (Will be removed in next version)
+**DELETE** (*A10*)  
+Execute a DELETE request
 
+**GET** (*A20*)  
+Execute a standard GET request. This is the most common action.  
 
-## Get variable and trigger a flow with it
-The paired action and trigger cards GET variable step 1/2 enables you to get a value from any JSON-formatted or XML-formatted get response and start a flow with the retrieved value as a token.
+**GET (query)** (*A21*)  
+For query parameters like ?a=1&b=zz use `{"a":1,"b":"zz"}`  
 
-The action card has four parameters:
- 1. Url (could also be a [node http options](https://nodejs.org/api/http.html#http_http_request_options_callback) object)
- 2. JSON encoded query parameters: ?a=1&b=zz use `{"a":1,"b":"zz"}`)
- 3. [JSONpath formatted](http://jsonpath.com/) expression of desired value. The result of this expression must be a single value.
- 4. Name of trigger/event for step 2
+**GET JSONpath Better Logic** (*A22*)  
+Extract a value from a JSON or XML formatted GET response and save this in a Better Logic variable.
 
-When this cards executes succesfull, it will start flows with the 'GET variable step 2' trigger card and same trigger/event as step 1. The result of the JSONpath expression is available as a token on the card.
+**GET JSONpath for trigger** (*A23*)  
+Extract a value from a JSON or XML formatted GET response and trigger other flows with this value available as a token (card *T80*).
 
-## Get variable and set a Better Logic variable with it
-The action card 'GET variable Better Logic' enables you to get a variable online from a JSON- or XML-formatted response on a get request and set this variable on a string variable in the Better Logic app.
+**POST form** (*A30*)  
+Execute a POST with form data (content-type 'application/x-www-form-urlencoded')
 
-The action card has three parameters:
- 1. Url (could also be a [node http options](https://nodejs.org/api/http.html#http_http_request_options_callback) object)
- 2. [JSONpath formatted](http://jsonpath.com/) expression of desired value. The result of this expression must be a single value.
- 3. Name of Better Logic variable (variables with type string supported)
+**POST JSON** (*A31*)  
+Execute a POST with json data (content-type 'application/json')
 
-Happy hacking!
-[Donate with PayPal](http://PayPal.Me/ErikvanDongen).
+**POST XML** (*A32*)  
+Execute a POST with XML data (content-type 'application/xml')  
+
+**PUT JSON** (*A40*)  
+Execute a PUT with json data
+
+**WebSocket send** (*A70*)  
+Open a WebSocket and send data.
+
+**JSONpath Better Logic** (*A80*)  
+Extract a value from the JSON token available on card *T30* and save this value in a Better Logic variable  
+
+**JSONpath for trigger** (*A81*)  
+Extract a value from the JSON token available on card *T30* and trigger other flows with this value available as a token (card *T80*)
+
+**Depricated geek card** (*A90*)  
+Please don't use this card, it's depricated as HTTP options can be used on every card with a 'url' parameter
+
+## More information on JSON and JSONpath expressions
+When in doubt validate your JSON values for flow cards with [jsonlint.com](http://jsonlint.com/).
+Check your JSONpath expressions with [jsonpath.com](http://jsonpath.com/).
+If you're using JSONpath expressions on XML responses, be aware of the XML to JSON conversion. This conversion can be simulated on [RunKit.com](https://runkit.com/585436e8fcbda700135741a7/586d421e08e18e001389a004) with the xml2js module.
 
 #### Notes   
   Requests will time-out after 30 seconds.
   Passing a valid JSON string (at least `{}` ) is obligatory for cards with a JSON parameter.
 
 ###### Advanced HTTP options
-  Instead of an url you can also provide a valid json with [node http options](https://nodejs.org/api/http.html#http_http_request_options_callback) in *every* card. These options will override options defined by the card to ensure maximal flexibility. Example with headers:
+  Instead of an url you can also provide a valid json with [node http options](https://nodejs.org/api/http.html#http_http_request_options_callback) in *every* card with a url parameter. These options will override options defined by the card to ensure maximal flexibility. Example with headers:
   ```
   {"method":"put","protocol":"https:","hostname":"httpbin.org","path":"/put","headers":{"User-Agent":"Node.js http.min"}}
   ```
 
 ###### Authorization on API calls
-  API calls requires header `Authorization` with value `Bearer <token>`, where <token> is your secret token (get it by typing `window.bearer_token` in the chrome console while logged in on your Homey). This can be disabled in the settings screen of this app.
+  API calls requires header `Authorization` with value `Bearer <token>`, where <token> is your secret token.  
+  *(Discover your bearer token by enabling the Chrome Console (F12) and open the 'Network' tab. Now open url `http://<your homey IP here>/api/manager/users/user/me` in the browser. Inspect the response and look for something like `Set-Cookie:bearer_token=123verylongcode456; Path=/; HttpOnly`)*
+
+  Configure your authorization and whitelists preferences on the settings page.
