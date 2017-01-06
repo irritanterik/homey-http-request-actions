@@ -23,8 +23,11 @@ Example: `http://192.168.0.100/api/app/com.internet/whitelist/externallights/on`
 **Incoming POST** (*T30*)  
 Trigger a flow by sending a POST request to one of the API-endpoints a specified above. The posted body will be available in the 'JSON'-token. This token can be used on cards *C80*, *A80* and *A81*.
 
-**JSONpath result** (*T80*)  
-Trigger a flow from cards *A22* and *A81* by using the same value in the 'trigger'-field.
+**JSONpath value** (*T80*)  
+Trigger a flow from cards *A23* and *A81* by using the same value in the 'trigger'-field.
+
+**JSON object** (*T81*)
+Trigger a flow from cards *A23* and *A81* by using the same value in the 'trigger'-field.
 
 ### Condition cards
 **GET code equation** (*C20*)  
@@ -37,7 +40,7 @@ Checks the HTTP response code of a GET request. Specify query parameters in JSON
 Extract and check a specific value from a JSON or XML formatted GET response. This card expects a JSONpath expression.
 
 **JSONpath equation** (*C80*)  
-Extract and check a specific value from the JSON token available on card *T30*.
+Extract and check a specific value from the JSON token available on cards *T30* and *T81*.
 
 ### Action cards
 **DELETE** (*A10*)  
@@ -52,8 +55,11 @@ For query parameters like ?a=1&b=zz use `{"a":1,"b":"zz"}`
 **GET JSONpath Better Logic** (*A22*)  
 Extract a value from a JSON or XML formatted GET response and save this in a Better Logic variable.
 
-**GET JSONpath for trigger** (*A23*)  
+**GET JSONpath trigger value** (*A23*)  
 Extract a value from a JSON or XML formatted GET response and trigger other flows with this value available as a token (card *T80*).
+
+**GET JSON trigger object** (*A24*)  
+Trigger other flow with the JSON or XML formatted response of this request. The result will be available as a token in JSON format (card *T81*).
 
 **POST form** (*A30*)  
 Execute a POST with form data (content-type 'application/x-www-form-urlencoded')
