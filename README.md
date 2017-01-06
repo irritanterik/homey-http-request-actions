@@ -85,7 +85,7 @@ Extract a value from the JSON token available on card *T30* and trigger other fl
 **Depricated geek card** (*A90*)  
 Please don't use this card, it's depricated as HTTP options can be used on every card with a 'url' parameter
 
-### Notes   
+## Notes   
 Requests will time-out after 30 seconds.
 Passing a valid JSON string (at least `{}` ) is obligatory for cards with a JSON parameter.
 
