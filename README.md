@@ -7,7 +7,7 @@ Happy hacking!
 If you like the app, buy me a beer!  
 [![Paypal beer button](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-pill-paypal-34px.png)](http://PayPal.Me/ErikvanDongen)
 
-### Trigger cards
+## Trigger cards
 **Incoming GET**  (*T20*)  
 Trigger a flow by sending a GET request to one of the next API-endpoints:
 - `http://<LocalIP>/api/app/com.internet/:event:`
@@ -29,7 +29,7 @@ Trigger a flow from cards *A23* and *A81* by using the same value in the 'trigge
 **JSON object** (*T81*)  
 Trigger a flow from card *A24* by using the same value in the 'trigger'-field.
 
-### Condition cards
+## Condition cards
 **GET code equation** (*C20*)  
 Checks the HTTP response code of a GET request.
 
@@ -42,7 +42,7 @@ Extract and check a specific value from a JSON or XML formatted GET response. Th
 **JSONpath equation** (*C80*)  
 Extract and check a specific value from the JSON token available on cards *T30* and *T81*.
 
-### Action cards
+## Action cards
 **DELETE** (*A10*)  
 Execute a DELETE request
 
@@ -85,22 +85,23 @@ Extract a value from the JSON token available on card *T30* and trigger other fl
 **Depricated geek card** (*A90*)  
 Please don't use this card, it's depricated as HTTP options can be used on every card with a 'url' parameter
 
-## More information on JSON and JSONpath expressions
+### Notes   
+Requests will time-out after 30 seconds.
+Passing a valid JSON string (at least `{}` ) is obligatory for cards with a JSON parameter.
+
+#### More information on JSON and JSONpath expressions
 When in doubt validate your JSON values for flow cards with [jsonlint.com](http://jsonlint.com/).
 Check your JSONpath expressions with [jsonpath.com](http://jsonpath.com/).
 If you're using JSONpath expressions on XML responses, be aware of the XML to JSON conversion. This conversion can be simulated on [RunKit.com](https://runkit.com/585436e8fcbda700135741a7/586d421e08e18e001389a004) with the xml2js module.
 
-#### Notes   
-  Requests will time-out after 30 seconds.
-  Passing a valid JSON string (at least `{}` ) is obligatory for cards with a JSON parameter.
 
-###### Advanced HTTP options
+#### Advanced HTTP options
   Instead of an url you can also provide a valid json with [node http options](https://nodejs.org/api/http.html#http_http_request_options_callback) in *every* card with a url parameter. These options will override options defined by the card to ensure maximal flexibility. Example with headers:
   ```
   {"method":"put","protocol":"https:","hostname":"httpbin.org","path":"/put","headers":{"User-Agent":"Node.js http.min"}}
   ```
 
-###### Authorization on API calls
+#### Authorization on API calls
   API calls requires header `Authorization` with value `Bearer <token>`, where <token> is your secret token.  
   *(Discover your bearer token by enabling the Chrome Console (F12) and open the 'Network' tab. Now open url `http://<your homey IP here>/api/manager/users/user/me` in the browser. Inspect the response and look for something like `Set-Cookie:bearer_token=123verylongcode456; Path=/; HttpOnly`)*
 
