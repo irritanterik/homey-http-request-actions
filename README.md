@@ -26,7 +26,7 @@ Trigger a flow by sending a POST request to one of the API-endpoints a specified
 **JSONpath value** (*T80*)  
 Trigger a flow from cards *A23* and *A81* by using the same value in the 'trigger'-field.
 
-**JSON object** (*T81*)
+**JSON object** (*T81*)  
 Trigger a flow from cards *A23* and *A81* by using the same value in the 'trigger'-field.
 
 ### Condition cards
