@@ -12,6 +12,7 @@ module.exports = [
     path: '/whitelist/:event',
     requires_authorization: false,
     fn: function (callback, args) {
+      if (args.req === {}) return callback(`missing request IP`)
       if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       Homey.manager('flow').trigger('http_get',
         {'value': 'null'},

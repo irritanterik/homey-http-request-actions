@@ -5,7 +5,7 @@ condition or execute HTTP requests as a flow action with this app.
 Happy hacking!  
 
 If you like the app, buy me a beer!  
-[![Paypal beer button](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-pill-paypal-34px.png)](http://PayPal.Me/ErikvanDongen)
+[![Paypal beer button](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-pill-paypal-34px.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=998FX5GVGH4XC&lc=NL&item_name=Homey%20Community%20Development&item_number=HTTP%20App&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
 ## Trigger cards
 **Incoming GET**  (*T20*)  
