@@ -1,4 +1,6 @@
 /* global Homey */
+var util = require('./lib/util.js')
+
 function onWhitelist (remoteAddress) {
   var ipv4 = remoteAddress.match(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g)[0]
   var whitelist = Homey.manager('settings').get('httpWhitelist') || []
@@ -12,6 +14,7 @@ module.exports = [
     path: '/whitelist/:event',
     requires_authorization: false,
     fn: function (callback, args) {
+      util.debugLog('received whitelist event GET', args.params)
       if (args.req === {}) return callback(`missing request IP`)
       if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       Homey.manager('flow').trigger('http_get',
@@ -26,6 +29,7 @@ module.exports = [
     path: '/whitelist/:event/:value',
     requires_authorization: false,
     fn: function (callback, args) {
+      util.debugLog('received whitelist event GET with value', args.params)
       if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       Homey.manager('flow').trigger('http_get',
         {'value': args.params.value},
@@ -39,6 +43,7 @@ module.exports = [
     path: '/whitelist/:event',
     requires_authorization: false,
     fn: function (callback, args) {
+      util.debugLog('received whitelist event POST', args.params)
       if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       Homey.manager('flow').trigger('http_post_variable',
         {'json': JSON.stringify(args.body)},
@@ -52,6 +57,7 @@ module.exports = [
     path: '/:event',
     requires_authorization: (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization),
     fn: function (callback, args) {
+      util.debugLog('received event GET', args.params)
       Homey.manager('flow').trigger('http_get',
         {'value': 'null'},
         {'event': args.params.event}
@@ -64,6 +70,7 @@ module.exports = [
     path: '/:event/:value',
     requires_authorization: (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization),
     fn: function (callback, args) {
+      util.debugLog('received event GET with value', args.params)
       Homey.manager('flow').trigger('http_get',
         {'value': args.params.value},
         {'event': args.params.event}
@@ -76,6 +83,7 @@ module.exports = [
     path: '/:event',
     requires_authorization: (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization),
     fn: function (callback, args) {
+      util.debugLog('received event POST', args.params)
       Homey.manager('flow').trigger('http_post_variable',
         {'json': JSON.stringify(args.body)},
         {'event': args.params.event}
