@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
     <script type="text/javascript" src="/manager/webserver/assets/js/jquery.js"></script>
     <script type="text/javascript" src="js/settings.js"></script>
     <link rel="stylesheet" href="css/settings.css">
@@ -15,7 +16,7 @@
       <h2 data-i18n="settings.authorization.title">Authorization</h2>
       <p data-i18n="settings.authorization.intro"></p>
       <div>
-        <input id="apiAuthorization" type="checkbox" onChange="saveApiAuthorization()" value="authorization" />
+        <input id="apiAuthorization" type="checkbox" value="authorization" />
         <label for="apiAuthorization" data-i18n="settings.authorization.fieldAuthorization"></label>
       </div>
       <br />
@@ -33,7 +34,7 @@
           </tr>
           <tr id="newIpRow">
             <td class="entry"><input type="text" id="newIp" class="code"></td>
-            <td class="entry"><button id="addIp" onClick="addIp()"><i class="fa fa-plus"></i></button></td>
+            <td class="entry"><button id="addIp"><i class="fa fa-plus"></i></button></td>
           </tr>
         </table>
       </div>

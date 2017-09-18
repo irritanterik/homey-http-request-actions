@@ -1,23 +1,32 @@
-/* global Homey */
-var util = require('./lib/util.js')
+const Homey = require('homey')
+const Util = require('./lib/util.js')
 
-function onWhitelist (remoteAddress) {
-  var ipv4 = remoteAddress.match(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g)[0]
-  var whitelist = Homey.manager('settings').get('httpWhitelist') || []
-  return (whitelist.indexOf(ipv4) !== -1)
-}
+var apiAuthorizationPublic = !(Homey.ManagerSettings.get('httpSettings') === null ? true : Homey.ManagerSettings.get('httpSettings').apiAuthorization)
 
 module.exports = [
   {
+    description: 'HTTP Get trigger card',
+    method: 'GET',
+    path: '/:event',
+    public: apiAuthorizationPublic,
+    fn: function (args, callback) {
+      Util.debugLog('received event GET', args.params)
+      Homey.ManagerFlow.getCard('trigger', 'http_get').trigger(
+        {'value': 'null'},
+        {'event': args.params.event}
+      )
+      callback(null, 'OK')
+    }
+  }, {
     description: 'HTTP Get trigger card (whitelist)',
     method: 'GET',
     path: '/whitelist/:event',
-    requires_authorization: false,
-    fn: function (callback, args) {
-      util.debugLog('received whitelist event GET', args.params)
+    public: true,
+    fn: function (args, callback) {
+      Util.debugLog('received whitelist event GET', args.params)
       if (args.req === {}) return callback(`missing request IP`)
       if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
-      Homey.manager('flow').trigger('http_get',
+      Homey.ManagerFlow.getCard('trigger', 'http_get').trigger(
         {'value': 'null'},
         {'event': args.params.event}
       )
@@ -27,11 +36,11 @@ module.exports = [
     description: 'HTTP Get trigger card with value (whitelist)',
     method: 'GET',
     path: '/whitelist/:event/:value',
-    requires_authorization: false,
-    fn: function (callback, args) {
-      util.debugLog('received whitelist event GET with value', args.params)
+    public: true,
+    fn: function (args, callback) {
+      Util.debugLog('received whitelist event GET with value', args.params)
       if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
-      Homey.manager('flow').trigger('http_get',
+      Homey.ManagerFlow.getCard('trigger', 'http_get').trigger(
         {'value': args.params.value},
         {'event': args.params.event}
       )
@@ -41,25 +50,12 @@ module.exports = [
     description: 'HTTP POST trigger card with jsonPath',
     method: 'POST',
     path: '/whitelist/:event',
-    requires_authorization: false,
-    fn: function (callback, args) {
-      util.debugLog('received whitelist event POST', args.params)
+    public: true,
+    fn: function (args, callback) {
+      Util.debugLog('received whitelist event POST', args.params)
       if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
-      Homey.manager('flow').trigger('http_post_variable',
+      Homey.ManagerFlow.getCard('trigger', 'http_post_variable').trigger(
         {'json': JSON.stringify(args.body)},
-        {'event': args.params.event}
-      )
-      callback(null, 'OK')
-    }
-  }, {
-    description: 'HTTP Get trigger card',
-    method: 'GET',
-    path: '/:event',
-    requires_authorization: (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization),
-    fn: function (callback, args) {
-      util.debugLog('received event GET', args.params)
-      Homey.manager('flow').trigger('http_get',
-        {'value': 'null'},
         {'event': args.params.event}
       )
       callback(null, 'OK')
@@ -68,10 +64,10 @@ module.exports = [
     description: 'HTTP Get trigger card with value',
     method: 'GET',
     path: '/:event/:value',
-    requires_authorization: (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization),
-    fn: function (callback, args) {
-      util.debugLog('received event GET with value', args.params)
-      Homey.manager('flow').trigger('http_get',
+    public: apiAuthorizationPublic,
+    fn: function (args, callback) {
+      Util.debugLog('received event GET with value', args.params)
+      Homey.ManagerFlow.getCard('trigger', 'http_get').trigger(
         {'value': args.params.value},
         {'event': args.params.event}
       )
@@ -81,10 +77,10 @@ module.exports = [
     description: 'HTTP POST trigger card with jsonPath',
     method: 'POST',
     path: '/:event',
-    requires_authorization: (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization),
-    fn: function (callback, args) {
-      util.debugLog('received event POST', args.params)
-      Homey.manager('flow').trigger('http_post_variable',
+    public: apiAuthorizationPublic,
+    fn: function (args, callback) {
+      Util.debugLog('received event POST', args.params)
+      Homey.ManagerFlow.getCard('trigger', 'http_post_variable').trigger(
         {'json': JSON.stringify(args.body)},
         {'event': args.params.event}
       )
@@ -92,3 +88,9 @@ module.exports = [
     }
   }
 ]
+
+function onWhitelist (remoteAddress) {
+  let ipv4 = remoteAddress.match(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g)[0]
+  let whitelist = Homey.ManagerSettings.get('httpWhitelist') || []
+  return (whitelist.indexOf(ipv4) !== -1)
+}

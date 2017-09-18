@@ -1,17 +1,19 @@
-/* global Homey */
 'use strict'
 
-var flowActions = require('./lib/flow/actions.js')
-var flowConditions = require('./lib/flow/conditions.js')
-var flowTriggers = require('./lib/flow/triggers.js')
-var util = require('./lib/util.js')
+const Homey = require('homey')
+const util = require('./lib/util.js')
+const flowActions = require('./lib/flow/actions.js')
+const flowConditions = require('./lib/flow/conditions.js')
+const flowTriggers = require('./lib/flow/triggers.js')
 
-module.exports = {
-  init: function () {
-    util.debugLog('Api Authorization Required setting', {value: (Homey.manager('settings').get('httpSettings') === undefined ? true : Homey.manager('settings').get('httpSettings').apiAuthorization)})
+class HttpApp extends Homey.App {
+  onInit () {
+    util.debugLog('Api Authorization Required setting', {value: (Homey.ManagerSettings.get('httpSettings') === null ? true : Homey.ManagerSettings.get('httpSettings').apiAuthorization)})
 
     flowTriggers.init()
     flowConditions.init()
     flowActions.init()
   }
 }
+
+module.exports = HttpApp

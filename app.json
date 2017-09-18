@@ -1,7 +1,8 @@
 {
   "id":"com.internet",
-  "version":"1.6.2",
-  "compatibility":">=1.1.0",
+  "version":"2.0.0",
+  "compatibility":"1.x >=1.5.3",
+  "sdk": 2,
   "name":{
     "en":"HTTP request flow cards",
     "nl":"HTTP request flowkaarten"
@@ -9,6 +10,10 @@
   "description":{
     "en":"HTTP request triggers, conditions and actions for flows",
     "nl":"HTTP request triggers, condities en acties voor flows"
+  },
+  "tags": {
+    "en": [ "url", "json", "webservice"],
+    "nl": [ "url", "json", "webservice"]
   },
   "author":{
     "name":"Erik van Dongen",

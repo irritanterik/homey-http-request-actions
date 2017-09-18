@@ -1,9 +1,12 @@
-/* global Homey, $, __ */
-var whitelist = []
 
-function onHomeyReady () {
+/* global $, __ */
+var whitelist = []
+var HomeyObj
+
+function onHomeyReady (Homey) {
+  HomeyObj = Homey
   initSettings()
-  Homey.ready()
+  HomeyObj.ready()
 }
 
 function initSettings () {
@@ -13,6 +16,12 @@ function initSettings () {
   $('#template').hide()
   $('#newIp').change(function () {
     typeIp()
+  })
+  $('#apiAuthorization').change(function () {
+    saveApiAuthorization()
+  })
+  $('#addIp').click(function () {
+    addIp()
   })
   loadSettings()
 }
@@ -57,7 +66,7 @@ function delIp (ip) {
 }
 
 function loadSettings () {
-  Homey.get('httpSettings', function (error, currentHttpSettings) {
+  HomeyObj.get('httpSettings', function (error, currentHttpSettings) {
     if (error) return console.error(error)
     if (currentHttpSettings != null) {
       $('#apiAuthorization').prop('checked', currentHttpSettings['apiAuthorization'])
@@ -66,7 +75,7 @@ function loadSettings () {
     }
   })
 
-  Homey.get('httpWhitelist', function (error, currentWhitelist) {
+  HomeyObj.get('httpWhitelist', function (error, currentWhitelist) {
     if (error) return console.error(error)
     whitelist = currentWhitelist || []
     whitelist.sort(sortIp).forEach(addIpEntry)
@@ -74,7 +83,7 @@ function loadSettings () {
 }
 
 function saveWhitelist () {
-  Homey.set('httpWhitelist', whitelist, function (error, settings) {
+  HomeyObj.set('httpWhitelist', whitelist, function (error, settings) {
     if (error) { return showError(__('settings.messages.errorSaving')) }
     showSuccess(__('settings.messages.successSaving'), 3000)
   })
@@ -84,7 +93,7 @@ function saveApiAuthorization () {
   var currentHttpSettings = {
     apiAuthorization: $('#apiAuthorization').prop('checked')
   }
-  Homey.set('httpSettings', currentHttpSettings, function (error, settings) {
+  HomeyObj.set('httpSettings', currentHttpSettings, function (error, settings) {
     if (error) { return showError(__('settings.messages.errorSaving')) }
     showSuccess(__('settings.messages.successSavingRestart'), 5000)
   })
