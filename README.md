@@ -96,7 +96,7 @@ If you're using JSONpath expressions on XML responses, be aware of the XML to JS
 #### Advanced HTTP options
   Instead of an url you can also provide a valid json with [node http options](https://nodejs.org/api/http.html#http_http_request_options_callback) in *every* card with a url parameter. These options will override options defined by the card to ensure maximal flexibility. Example with headers:
   ```
-  {"method":"put","protocol":"https:","hostname":"httpbin.org","path":"/put","headers":{"User-Agent":"Node.js http.min"}}
+  {"method":"put","protocol":"https:","hostname":"httpbin.org","path":"/put","headers":{"user-agent":"Node.js http.min"}}
   ```
 
 #### Authorization on API calls
