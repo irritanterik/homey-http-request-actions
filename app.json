@@ -1,7 +1,7 @@
 {
   "id":"com.internet",
-  "version":"2.0.3",
-  "compatibility":"1.x >=1.5.3",
+  "version":"2.0.4",
+  "compatibility":">=2.x",
   "sdk": 2,
   "name":{
     "en":"HTTP request flow cards",

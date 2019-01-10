@@ -17,6 +17,7 @@ Trigger a flow by sending a GET request to one of the next API-endpoints:
 Add `/:value:` if you want to pass a value to the trigger card, this will make it available in the 'value'-token. All values will be defined as strings. Example: `http://192.168.0.100/api/app/com.internet/whitelist/externallights/on`
 
 Configure your authorization and whitelists preferences on the settings page.
+*** WHITELISTING IS NOT FUNCTIONAL IN HOMEY V2 ***
 
 **Incoming POST** (*T30*)  
 Trigger a flow by sending a POST request to one of the API-endpoints a specified above. The posted body will be available in the 'JSON'-token. This token can be used on cards *C80*, *A80* and *A81*.

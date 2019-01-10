@@ -24,8 +24,9 @@ module.exports = [
     public: true,
     fn: function (args, callback) {
       Util.debugLog('received whitelist event GET', args.params)
-      if (args.req === {}) return callback(`missing request IP`)
-      if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
+      // temp v2 workaround
+      // if (args.req === {}) return callback(`missing request IP`)
+      // if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       Homey.ManagerFlow.getCard('trigger', 'http_get').trigger(
         {'value': 'null'},
         {'event': args.params.event}
@@ -38,8 +39,9 @@ module.exports = [
     path: '/whitelist/:event/:value',
     public: true,
     fn: function (args, callback) {
-      Util.debugLog('received whitelist event GET with value', args.params)
-      if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
+      Util.debugLog('received whitelist event GET with value', args)
+      // temp v2 workaround
+      // if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       Homey.ManagerFlow.getCard('trigger', 'http_get').trigger(
         {'value': args.params.value},
         {'event': args.params.event}
@@ -53,7 +55,8 @@ module.exports = [
     public: true,
     fn: function (args, callback) {
       Util.debugLog('received whitelist event POST', args.params)
-      if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
+      // temp v2 workaround
+      // if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       Homey.ManagerFlow.getCard('trigger', 'http_post_variable').trigger(
         {'json': JSON.stringify(args.body)},
         {'event': args.params.event}
