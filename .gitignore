@@ -6,7 +6,6 @@ node_modules/**/*.md
 node_modules/**/*.markdown
 node_modules/**/example/
 node_modules/**/test/
-node_modules/**/package.json
 
 # Windows image file caches
 Thumbs.db
