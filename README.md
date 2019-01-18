@@ -15,7 +15,7 @@ Trigger a flow by sending a GET request to one of the next API-endpoints:
 - `https://<AthomCloudId>.connect.athom.com/api/app/com.internet/:event:`
 
 Add `/:value:` if you want to pass a value to the trigger card, this will make it available in the 'value'-token. All values will be defined as strings. Example: `http://192.168.0.100/api/app/com.internet/whitelist/externallights/on`
-Get your <AthomCloudId> from http://developer.athom.com/tools/system
+Get your `<AthomCloudId>` from http://developer.athom.com/tools/system
 
 Configure your authorization and whitelists preferences on the settings page.
 *** WHITELISTING IS NOT FUNCTIONAL IN HOMEY V2 ***
@@ -104,7 +104,7 @@ If you're using JSONpath expressions on XML responses, be aware of the XML to JS
   ```
 
 #### Authorization on API calls
-  API calls requires header `Authorization` with value `Bearer <token>`, where <token> is your secret token.  
+  API calls requires header `Authorization` with value `Bearer <token>`, where `<token>` is your secret token.  
   *(Discover your bearer token by enabling the Chrome Console (F12) and open the 'Network' tab. Now navigate to https://developer.athom.com/tools/system. Inspect the network traffic and look for the authorization header. It contains 'Bearer 123verylongcode456')*
 
   Configure your authorization and whitelists preferences on the settings page.

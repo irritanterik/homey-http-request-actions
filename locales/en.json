@@ -7,7 +7,7 @@
       "fieldAuthorization": "Require authorization on API"
     },
     "whitelist": {
-      "title": "Whitelist",
+      "title": "Whitelist *** NOT FUNCTIONAL IN HOMEY V2 ***",
       "intro": "While an authorization header might be obligated based on the setting above, unauthorized calls on http://[YourHomeyIP]/api/app/com.internet/whitelist/[event]/[value] are allowed based on IPv4 addresses saved on this whitelist.",
       "headerIp": "IP-address"
     },

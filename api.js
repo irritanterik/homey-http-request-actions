@@ -13,7 +13,7 @@ module.exports = [
       Util.debugLog('received event GET', args.params)
       const triggerCard = await Homey.app.triggerHttpGet
       triggerCard.trigger(
-        {'value': 'null'},
+        {'value': 'null', 'value_num': 0},
         {'event': args.params.event}
       )
       callback(null, 'OK')
@@ -30,7 +30,7 @@ module.exports = [
       // if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       const triggerCard = await Homey.app.triggerHttpGet
       triggerCard.trigger(
-        {'value': 'null'},
+        {'value': 'null', 'value_num': 0},
         {'event': args.params.event}
       )
       callback(null, 'OK')
@@ -46,7 +46,7 @@ module.exports = [
       // if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       const triggerCard = await Homey.app.triggerHttpGet
       triggerCard.trigger(
-        {'value': args.params.value},
+        {'value': args.params.value, 'value_num': parseFloat(args.params.value)},
         {'event': args.params.event}
       )
       callback(null, 'OK')
@@ -60,7 +60,7 @@ module.exports = [
       Util.debugLog('received whitelist event POST', args.params)
       // temp v2 workaround
       // if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
-      const triggerCard = await Homey.app.triggerHttpGet
+      const triggerCard = await Homey.app.triggerHttpPostVariable
       triggerCard.trigger(
         {'json': JSON.stringify(args.body)},
         {'event': args.params.event}
@@ -76,7 +76,7 @@ module.exports = [
       Util.debugLog('received event GET with value', args.params)
       const triggerCard = await Homey.app.triggerHttpGet
       triggerCard.trigger(
-        {'value': args.params.value},
+        {'value': args.params.value, 'value_num': parseFloat(args.params.value)},
         {'event': args.params.event}
       )
       callback(null, 'OK')
