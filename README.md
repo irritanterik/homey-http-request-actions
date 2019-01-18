@@ -32,9 +32,11 @@ Trigger a flow from card *A24* by using the same value in the 'trigger'-field.
 ## Condition cards
 **GET code equation** (*C20*)  
 Checks the HTTP response code of a GET request.
+Timeouts return response code 1, other errors return response code 0.
 
 **GET (query) code equation** (*C21*)  
 Checks the HTTP response code of a GET request. Specify query parameters in JSON format.
+Timeouts return response code 1, other errors return response code 0.
 
 **GET JSONpath equation** (*C22*)  
 Extract and check a specific value from a JSON or XML formatted GET response. This card expects a JSONpath expression.
