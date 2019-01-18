@@ -47,7 +47,18 @@
             },
             "type":"string",
             "example":{
-              "en":"5"
+              "en":"abc"
+            }
+          },
+          {
+            "name":"value_num",
+            "title":{
+              "en":"value number",
+              "nl":"waarde numeriek"
+            },
+            "type":"number",
+            "example":{
+              "en":"42"
             }
           }
         ],
@@ -112,7 +123,18 @@
             },
             "type":"string",
             "example":{
-              "en":"5"
+              "en":"abc"
+            }
+          },
+          {
+            "name":"value_num",
+            "title":{
+              "en":"value number",
+              "nl":"waarde numeriek"
+            },
+            "type":"number",
+            "example":{
+              "en":"42"
             }
           }
         ],
