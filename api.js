@@ -46,7 +46,7 @@ module.exports = [
       // if (!onWhitelist(args.req.remoteAddress)) return callback(`not on whitelist`)
       const triggerCard = await Homey.app.triggerHttpGet
       triggerCard.trigger(
-        {'value': args.params.value, 'value_num': parseFloat(args.params.value)},
+        {'value': args.params.value, 'value_num': parseFloat(args.params.value) || 0},
         {'event': args.params.event}
       )
       callback(null, 'OK')
@@ -74,9 +74,9 @@ module.exports = [
     public: apiAuthorizationPublic,
     fn: async function (args, callback) {
       Util.debugLog('received event GET with value', args.params)
-      const triggerCard = await Homey.app.triggerHttpGet
+      let triggerCard = await Homey.app.triggerHttpGet
       triggerCard.trigger(
-        {'value': args.params.value, 'value_num': parseFloat(args.params.value)},
+        {'value': args.params.value, 'value_num': parseFloat(args.params.value) || 0},
         {'event': args.params.event}
       )
       callback(null, 'OK')
