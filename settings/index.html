@@ -12,16 +12,25 @@
     <div id="busy" class="busy"><i class="fa fa-cog fa-spin fa-2x fa-fw"></i><span>..</span></div>
     <div id="error" class="error"><i class="fa fa-times-circle fa-2x fa-fw"></i><span>..</span></div>
     <div id="success" class="success"><i class="fa fa-check fa-2x fa-fw"></i><span>..</span></div>
-    <fieldset>
+    <!--fieldset-->
       <h2 data-i18n="settings.authorization.title">Authorization</h2>
       <p data-i18n="settings.authorization.intro"></p>
-      <div>
-        <input id="apiAuthorization" type="checkbox" value="authorization" />
-        <label for="apiAuthorization" data-i18n="settings.authorization.fieldAuthorization"></label>
+      <div class="settings-itemgroup">
+        <div class="settings-item">
+            <div class="settings-item-text">
+              <label class="form-switch">
+              <input id="apiAuthorization" type="checkbox" value="authorization" />
+              <i></i>
+              </label>
+            </div>
+            <div class="settings-item-text">
+              <label for="apiAuthorization" data-i18n="settings.authorization.fieldAuthorization"></label>
+            </div>
+        </div>
       </div>
       <br />
       <h2 data-i18n="settings.whitelist.title">Whitelist</h2>
-      <p data-i18n="settings.whitelist.intro"></p>
+      <!--p data-i18n="settings.whitelist.intro"></p>
       <div>
         <table id="whitelist" class="whitelist">
           <tr>
@@ -37,7 +46,7 @@
             <td class="entry"><button id="addIp"><i class="fa fa-plus"></i></button></td>
           </tr>
         </table>
-      </div>
-    </fieldset>
+      </div-->
+    <!--/fieldset-->
   </body>
 </html>
