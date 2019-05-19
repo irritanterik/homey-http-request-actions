@@ -1,6 +1,6 @@
 {
   "id":"com.internet",
-  "version":"2.0.8",
+  "version":"2.0.10",
   "compatibility":">=2.x",
   "sdk": 2,
   "name":{
