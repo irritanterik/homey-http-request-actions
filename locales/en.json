@@ -3,7 +3,7 @@
     "title": "HTTP App settings",
     "authorization": {
       "title": "Authorization headers",
-      "intro": "Triggering flows with HTTP GET requests can be done by calling http://[YourHomeyIP]/api/app/com.internet/[event]/[value]. For remote access this can be done by calling https://[YourId].homey.athom.com/api/app/com.internet/[event]. Both methods require authorization by default. This can be disabled for *both* methods by unselect the authorization checkbox. Restart this app (on the app-overview) after you have changed settings.",
+      "intro": "Triggering flows with HTTP GET requests can be done by calling http://[YourHomeyIP]/api/app/com.internet/[event]/[value]. For remote access this can be done by calling https://[YourId].homey.athom.com/api/app/com.internet/[event]. Both methods require authorization by default. This can be disabled for *both* methods by switching of the Require Authorization on Api settings below. Restart this app (on the app-overview) after you have changed settings.",
       "fieldAuthorization": "Require authorization on API"
     },
     "whitelist": {
