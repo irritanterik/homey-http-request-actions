@@ -1,0 +1,26 @@
+{
+  "id": "http_post_xml",
+  "title": {
+    "en": "POST XML"
+  },
+  "hint": {
+    "en": "A32 - Execute a POST with XML data. Parameters: 1. Url; 2. XML.",
+    "nl": "A32 - Uitvoeren POST request met XML gegevens. Parameters: 1. Url; 2. XML."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    },
+    {
+      "name": "data",
+      "type": "text",
+      "placeholder": {
+        "en": "{}"
+      }
+    }
+  ]
+}

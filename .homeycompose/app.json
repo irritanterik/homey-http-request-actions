@@ -1,0 +1,65 @@
+{
+  "id": "com.internet",
+  "version": "3.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#15418d",
+  "name": {
+    "en": "HTTP request flow cards",
+    "nl": "HTTP request flowkaarten"
+  },
+  "platforms": ["local"],
+  "description": {
+    "en": "HTTP request triggers, conditions and actions for flows",
+    "nl": "HTTP request triggers, condities en acties voor flows"
+  },
+  "tags": {
+    "en": [
+      "url",
+      "json",
+      "webservice"
+    ],
+    "nl": [
+      "url",
+      "json",
+      "webservice"
+    ]
+  },
+  "api": {
+    "triggerCardGet": {
+      "method": "GET",
+      "path": "/:event",
+      "public": true
+    },
+    "triggerCardGetVar": {
+      "method": "GET",
+      "path": "/:event/:value",
+      "public": true
+    },
+    "triggerCardPost": {
+      "method": "POST",
+      "path": "/:event",
+      "public": true
+    }
+  },
+  "author": {
+    "name": "Erik van Dongen",
+    "website": "http://github.com/irritanterik/"
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "Erikvandongen"
+      }
+    }
+  },
+  "source": "https://github.com/irritanterik/homey-http-request-actions",
+  "bugs": {
+    "url": "https://github.com/irritanterik/homey-http-request-actions/issues"
+  },
+  "images": {
+    "large": "./assets/images/large.jpg",
+    "small": "./assets/images/small.jpg"
+  },
+  "category": "tools"
+}

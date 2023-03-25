@@ -6,6 +6,7 @@ node_modules/**/*.md
 node_modules/**/*.markdown
 node_modules/**/example/
 node_modules/**/test/
+node_modules/
 
 # Windows image file caches
 Thumbs.db
@@ -54,3 +55,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+# Added by Homey CLI
+/.homeybuild/

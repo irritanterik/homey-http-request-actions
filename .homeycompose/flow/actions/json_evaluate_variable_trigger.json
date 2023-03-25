@@ -1,0 +1,31 @@
+{
+  "id": "json_evaluate_variable_trigger",
+  "title": {
+    "en": "JSONpath for trigger",
+    "nl": "JSONpath for trigger"
+  },
+  "hint": {
+    "en": "A81 - Extract a value from the JSON token available on card T30 and trigger other flows with this value available as a token (card T80). Parameters: 1. JSONpath expression; 2. Trigger corresponding with trigger value on card T80.",
+    "nl": "A81 - Afleiden van een waarde uit de JSON token die beschikbaar is op kaart T30 en andere flows starten waarbij deze waarde beschikbaar is in de token (kaart T80). Parameters: 1. JSONpath expressie; 2. Trigger die overeenkomst met de trigger op kaart T80."
+  },
+  "droptoken": [
+    "string"
+  ],
+  "args": [
+    {
+      "name": "path",
+      "type": "text",
+      "placeholder": {
+        "en": "$."
+      }
+    },
+    {
+      "name": "trigger",
+      "type": "text",
+      "placeholder": {
+        "en": "trigger for T80",
+        "nl": "trigger voor T80"
+      }
+    }
+  ]
+}

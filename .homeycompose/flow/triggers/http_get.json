@@ -1,0 +1,45 @@
+{
+  "id": "http_get",
+  "title": {
+    "en": "Incoming GET",
+    "nl": "Ontvangen GET"
+  },
+  "hint": {
+    "en": "T20 - Trigger this card by sending Homey a GET request.",
+    "nl": "T20 - Trigger deze kaart door een GET request naar Homey te sturen."
+  },
+  "tokens": [
+    {
+      "name": "value",
+      "title": {
+        "en": "value",
+        "nl": "waarde"
+      },
+      "type": "string",
+      "example": {
+        "en": "abc"
+      }
+    },
+    {
+      "name": "value_num",
+      "title": {
+        "en": "value number",
+        "nl": "waarde numeriek"
+      },
+      "type": "number",
+      "example": {
+        "en": "42"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "event",
+      "type": "text",
+      "placeholder": {
+        "en": "Event name",
+        "nl": "Event naam"
+      }
+    }
+  ]
+}

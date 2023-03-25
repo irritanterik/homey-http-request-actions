@@ -1,0 +1,26 @@
+{
+  "id": "http_get_json",
+  "title": {
+    "en": "GET (query)"
+  },
+  "hint": {
+    "en": "A21 - Execute a GET request. Parameters: 1. Url; 2. JSON formatted query parameters (For a query like ?a=1&b=zz use `{\"a\":1,\"b\":\"zz\"}`).",
+    "nl": "A21 - Uitvoeren GET request. Parameters: 1. Url; 2. Query parameters in JSON formaat (Voor een query als ?a=1&b=zz gebruik `{\"a\":1,\"b\":\"zz\"}`)."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    },
+    {
+      "name": "data",
+      "type": "text",
+      "placeholder": {
+        "en": "{}"
+      }
+    }
+  ]
+}

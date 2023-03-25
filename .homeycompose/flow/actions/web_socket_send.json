@@ -1,0 +1,28 @@
+{
+  "id": "web_socket_send",
+  "title": {
+    "en": "WebSocket send",
+    "nl": "WebSocket verzenden"
+  },
+  "hint": {
+    "en": "A70 - Open a WebSocket and send data. Parameters: 1. Url including port; 2. Data.",
+    "nl": "A70 - Open een WebSocket en verstuur data. Parameters: 1. Url inclusief poort; 2. Data."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "ws://url:port/"
+      }
+    },
+    {
+      "name": "data",
+      "type": "text",
+      "placeholder": {
+        "en": "message",
+        "nl": "bericht"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "http_put_json",
+  "title": {
+    "en": "PUT JSON"
+  },
+  "hint": {
+    "en": "A40 - Execute a PUT with JSON data. Parameters: 1. Url; 2. JSON data.",
+    "nl": "A40 - Uitvoeren PUT request met JSON gegevens: 1. Url; 2. JSON gegevens."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    },
+    {
+      "name": "data",
+      "type": "text",
+      "placeholder": {
+        "en": "{}"
+      }
+    }
+  ]
+}

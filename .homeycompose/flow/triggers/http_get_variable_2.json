@@ -1,0 +1,45 @@
+{
+  "id": "http_get_variable_2",
+  "title": {
+    "en": "JSONpath value",
+    "nl": "JSONpath waarde"
+  },
+  "hint": {
+    "en": "T80 - Trigger this card with cards A22 and A81 by using the same value in the `trigger`-field.",
+    "nl": "T80 - Trigger deze kaart met kaarten A22 en A81 door dezelfde waarde in te vullen als `trigger`."
+  },
+  "tokens": [
+    {
+      "name": "value",
+      "title": {
+        "en": "value",
+        "nl": "waarde"
+      },
+      "type": "string",
+      "example": {
+        "en": "abc"
+      }
+    },
+    {
+      "name": "value_num",
+      "title": {
+        "en": "value number",
+        "nl": "waarde numeriek"
+      },
+      "type": "number",
+      "example": {
+        "en": "42"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "trigger",
+      "type": "text",
+      "placeholder": {
+        "en": "Trigger",
+        "nl": "Trigger"
+      }
+    }
+  ]
+}

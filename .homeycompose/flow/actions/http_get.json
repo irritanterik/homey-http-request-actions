@@ -1,0 +1,19 @@
+{
+  "id": "http_get",
+  "title": {
+    "en": "GET"
+  },
+  "hint": {
+    "en": "A20 - Execute a GET request. Parameter: Url.",
+    "nl": "A20 - Uitvoeren GET request. Parameter: Url."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    }
+  ]
+}

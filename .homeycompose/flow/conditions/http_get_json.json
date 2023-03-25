@@ -1,0 +1,36 @@
+{
+  "id": "http_get_json",
+  "title": {
+    "en": "GET (query) code is !{{|not}}",
+    "nl": "GET (query) code is !{{|niet}}"
+  },
+  "hint": {
+    "en": "C21 - Checks the HTTP response code of a GET request. Parameters: 1. Url; 2. JSON formatted query parameters; 3. Response code.",
+    "nl": "C21 - Valideer de HTTP response code van een GET request. Parameters: 1. Url; 2. Query parameters in JSON formaat; 3. Response code."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    },
+    {
+      "name": "data",
+      "type": "text",
+      "placeholder": {
+        "en": "{}"
+      }
+    },
+    {
+      "name": "status_code",
+      "type": "number",
+      "min": 100,
+      "max": 505,
+      "placeholder": {
+        "en": "200"
+      }
+    }
+  ]
+}

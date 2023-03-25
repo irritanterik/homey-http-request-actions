@@ -4,8 +4,7 @@ condition or execute HTTP requests as a flow action with this app.
 
 Happy hacking!  
 
-If you like the app, buy me a beer!  
-[![Paypal beer button](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-pill-paypal-34px.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=998FX5GVGH4XC&lc=NL&item_name=Homey%20Community%20Development&item_number=HTTP%20App&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+If you like the app, buy me a beer!
 
 ## Trigger cards
 **Incoming GET**  (*T20*)  
@@ -54,9 +53,6 @@ Execute a standard GET request. This is the most common action.
 **GET (query)** (*A21*)  
 For query parameters like ?a=1&b=zz use `{"a":1,"b":"zz"}`  
 
-**GET JSONpath Better Logic** (*A22*)  
-Extract a value from a JSON or XML formatted GET response and save this in a Better Logic variable.
-
 **GET JSONpath trigger value** (*A23*)  
 Extract a value from a JSON or XML formatted GET response and trigger other flows with this value available as a token (card *T80*).
 
@@ -77,9 +73,6 @@ Execute a PUT with json data
 
 **WebSocket send** (*A70*)  
 Open a WebSocket and send data.
-
-**JSONpath Better Logic** (*A80*)  
-Extract a value from the JSON token available on card *T30* and save this value in a Better Logic variable  
 
 **JSONpath for trigger** (*A81*)  
 Extract a value from the JSON token available on card *T30* and trigger other flows with this value available as a token (card *T80*)

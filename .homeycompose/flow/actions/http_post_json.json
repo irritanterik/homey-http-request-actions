@@ -1,0 +1,26 @@
+{
+  "id": "http_post_json",
+  "title": {
+    "en": "POST JSON"
+  },
+  "hint": {
+    "en": "A31 - Execute a POST with JSON data. Parameters: 1. Url; 2. JSON data.",
+    "nl": "A31 - Uitvoeren POST request met JSON gegevens. Parameters: 1. Url; 2. JSON gegevens."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    },
+    {
+      "name": "data",
+      "type": "text",
+      "placeholder": {
+        "en": "{}"
+      }
+    }
+  ]
+}

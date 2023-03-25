@@ -1,0 +1,27 @@
+{
+  "id": "http_get_full_json",
+  "title": {
+    "en": "GET JSON trigger object"
+  },
+  "hint": {
+    "en": "A24 - Trigger other flow with the JSON or XML formatted response of this request. The result will be available as a token in JSON format (card T81). ParametersL 1. Url; 2. Trigger corresponding with trigger value on card T81.",
+    "nl": "A24 - Start een andere flow met het JSON of XML antwoord op dit verzoek. Het resultaat is beschikbaar als token in JSON formaat (card T81). Parameters: 1. Url; 2. Trigger die overeenkomst met de trigger op kaart T81."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    },
+    {
+      "name": "trigger",
+      "type": "text",
+      "placeholder": {
+        "en": "Trigger",
+        "nl": "Trigger"
+      }
+    }
+  ]
+}

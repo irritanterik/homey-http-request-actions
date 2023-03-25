@@ -1,0 +1,42 @@
+{
+  "id": "http_get_variable_1",
+  "title": {
+    "en": "GET JSONpath trigger value",
+    "nl": "GET JSONpath trigger waarde"
+  },
+  "hint": {
+    "en": "A23 - Extract a value from a JSON or XML formatted GET response and trigger other flows with this value available as a token (card T80). Parameters: 1. Url; 2. JSON formatted query parameters; 3. JSONpath expression; 4. Trigger corresponding with trigger value on card T80.",
+    "nl": "A23 - Afleiden van een waarde uit een JSON of XML antwoord op een GET request en andere flows triggeren waarbij deze waarde beschikbaar is in de token (kaart T80). Parameters: 1. Url; 2. Query parameters in JSON formaat; 3. JSONpath expressie; 4. Trigger die overeenkomst met de trigger op kaart T80."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    },
+    {
+      "name": "data",
+      "type": "text",
+      "placeholder": {
+        "en": "{}"
+      }
+    },
+    {
+      "name": "path",
+      "type": "text",
+      "placeholder": {
+        "en": "JSONpath"
+      }
+    },
+    {
+      "name": "trigger",
+      "type": "text",
+      "placeholder": {
+        "en": "Trigger",
+        "nl": "Trigger"
+      }
+    }
+  ]
+}

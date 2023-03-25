@@ -1,0 +1,26 @@
+{
+  "id": "http_post_form",
+  "title": {
+    "en": "POST form"
+  },
+  "hint": {
+    "en": "A30 - Execute a POST with form data. Parameters: 1. Url; 2. JSON formatted form data.",
+    "nl": "A30 - Uitvoeren POST request met form gegevens. Parameters: 1. Url; 2. Form gegevens in JSON formaat."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    },
+    {
+      "name": "data",
+      "type": "text",
+      "placeholder": {
+        "en": "{}"
+      }
+    }
+  ]
+}

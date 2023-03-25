@@ -1,0 +1,19 @@
+{
+  "id": "http_delete",
+  "title": {
+    "en": "DELETE"
+  },
+  "hint": {
+    "en": "A10 - Execute a DELETE request. Parameter: Url.",
+    "nl": "A10 - Uitvoeren DELETE request. Parameter: Url."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    }
+  ]
+}

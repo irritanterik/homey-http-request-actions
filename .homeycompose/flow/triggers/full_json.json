@@ -1,0 +1,33 @@
+{
+  "id": "full_json",
+  "title": {
+    "en": "JSON object",
+    "nl": "JSON object"
+  },
+  "hint": {
+    "en": "T81 - Trigger this card with card A24 by using the same value in the `trigger`-field.",
+    "nl": "T81 - Trigger deze kaart met kaart A24 door dezelfde waarde in te vullen als `trigger`."
+  },
+  "tokens": [
+    {
+      "name": "json",
+      "title": {
+        "en": "JSON"
+      },
+      "type": "string",
+      "example": {
+        "en": "{\"a\":1,\"b\":\"some text\"}"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "trigger",
+      "type": "text",
+      "placeholder": {
+        "en": "Trigger",
+        "nl": "Trigger"
+      }
+    }
+  ]
+}
