@@ -4,6 +4,10 @@
     "en": "JSON object",
     "nl": "JSON object"
   },
+  "titleFormatted": {
+    "en": "JSON object [[trigger]]",
+    "nl": "JSON object [[trigger]]"
+  },
   "advanced": true,
   "hint": {
     "en": "T81 - Trigger this card with card A24 by using the same value in the `trigger`-field.",

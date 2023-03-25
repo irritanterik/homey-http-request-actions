@@ -4,6 +4,10 @@
     "en": "Incoming POST",
     "nl": "Ontvangen POST"
   },
+  "titleFormatted": {
+    "en": "Incoming POST /[[event]]",
+    "nl": "Ontvangen POST /[[event]]"
+  },
   "advanced": true,
   "hint": {
     "en": "T30 - Trigger this card by sending Homey a POST request. The posted body will be available in the `JSON`-token. This token can be used on cards C80, A80 and A81.",

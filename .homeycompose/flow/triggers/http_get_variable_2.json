@@ -4,6 +4,10 @@
     "en": "JSONpath value",
     "nl": "JSONpath waarde"
   },
+  "titleFormatted": {
+    "en": "JSONpath value [[trigger]]",
+    "nl": "JSONpath waarde [[trigger]]"
+  },
   "advanced": true,
   "hint": {
     "en": "T80 - Trigger this card with cards A22 and A81 by using the same value in the `trigger`-field.",

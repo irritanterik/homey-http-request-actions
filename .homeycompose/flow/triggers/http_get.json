@@ -4,6 +4,10 @@
     "en": "Incoming GET",
     "nl": "Ontvangen GET"
   },
+  "titleFormatted": {
+    "en": "Incoming GET \\[[event]]",
+    "nl": "Ontvangen GET \\[[event]]"
+  },
   "advanced": true,
   "hint": {
     "en": "T20 - Trigger this card by sending Homey a GET request.",
