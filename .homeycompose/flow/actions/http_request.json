@@ -4,7 +4,8 @@
     "en": "Depricated geek card",
     "nl": "Vervallen geek card"
   },
-  "advanced": true,
+  "deprecated": true,
+  "advanced": false,
   "hint": {
     "en": "A90 - Please don't use this card, it's depricated as HTTP options can be used on every card with a `url` parameter.",
     "nl": "A90 - Gebruik deze kaart niet meer. Bij elke kaart met een `url` parameter kunnen HTTP options meegegeven worden."

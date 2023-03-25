@@ -8,6 +8,7 @@
     "en": "Incoming GET /[[event]]",
     "nl": "Ontvangen GET /[[event]]"
   },
+  "highlight": true,
   "advanced": true,
   "hint": {
     "en": "T20 - Trigger this card by sending Homey a GET request.",

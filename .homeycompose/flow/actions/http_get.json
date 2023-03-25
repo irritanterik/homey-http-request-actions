@@ -3,6 +3,7 @@
   "title": {
     "en": "GET"
   },
+  "highlight": true,
   "advanced": true,
   "hint": {
     "en": "A20 - Execute a GET request. Parameter: Url.",
