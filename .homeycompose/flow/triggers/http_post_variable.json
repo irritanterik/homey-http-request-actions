@@ -4,6 +4,7 @@
     "en": "Incoming POST",
     "nl": "Ontvangen POST"
   },
+  "advanced": true,
   "hint": {
     "en": "T30 - Trigger this card by sending Homey a POST request. The posted body will be available in the `JSON`-token. This token can be used on cards C80, A80 and A81.",
     "nl": "T30 - Trigger deze kaart door een POST request naar Homey te verzenden. De `body` van het request is beschikbaar in de `JSON`-token. Deze token kan gebruikt worden met kaarten C80, A80 en A81."

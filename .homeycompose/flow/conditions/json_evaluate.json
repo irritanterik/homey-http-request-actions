@@ -4,6 +4,7 @@
     "en": "JSONpath is !{{|not}}",
     "nl": "JSONpath is !{{|niet}}"
   },
+  "advanced": true,
   "hint": {
     "en": "C80 - Extract and check a specific value from the JSON token available on card T30. Parameters: 1. JSONpath expression; 2. Value for equation.",
     "nl": "C80 - Extract and check a specific value from the JSON token available on card T30. Parameters: 1. JSONpath expressie; 2. Waarde voor vergelijking."

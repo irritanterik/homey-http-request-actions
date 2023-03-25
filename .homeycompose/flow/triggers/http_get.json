@@ -4,6 +4,7 @@
     "en": "Incoming GET",
     "nl": "Ontvangen GET"
   },
+  "advanced": true,
   "hint": {
     "en": "T20 - Trigger this card by sending Homey a GET request.",
     "nl": "T20 - Trigger deze kaart door een GET request naar Homey te sturen."

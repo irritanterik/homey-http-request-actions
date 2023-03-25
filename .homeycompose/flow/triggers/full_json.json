@@ -4,6 +4,7 @@
     "en": "JSON object",
     "nl": "JSON object"
   },
+  "advanced": true,
   "hint": {
     "en": "T81 - Trigger this card with card A24 by using the same value in the `trigger`-field.",
     "nl": "T81 - Trigger deze kaart met kaart A24 door dezelfde waarde in te vullen als `trigger`."

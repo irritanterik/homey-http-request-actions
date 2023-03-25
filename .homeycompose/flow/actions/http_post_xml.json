@@ -3,6 +3,7 @@
   "title": {
     "en": "POST XML"
   },
+  "advanced": true,
   "hint": {
     "en": "A32 - Execute a POST with XML data. Parameters: 1. Url; 2. XML.",
     "nl": "A32 - Uitvoeren POST request met XML gegevens. Parameters: 1. Url; 2. XML."

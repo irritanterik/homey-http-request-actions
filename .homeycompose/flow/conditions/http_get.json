@@ -4,6 +4,7 @@
     "en": "GET code is !{{|not}}",
     "nl": "GET code is !{{|niet}}"
   },
+  "advanced": true,
   "hint": {
     "en": "C20 - Checks the HTTP response code of a GET request. Parameters: 1. Url; 2. Response code.",
     "nl": "C20 - Valideer de HTTP response code van een GET request. Parameters: 1. Url; 2. Response code."

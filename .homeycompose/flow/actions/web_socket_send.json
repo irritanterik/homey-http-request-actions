@@ -4,6 +4,7 @@
     "en": "WebSocket send",
     "nl": "WebSocket verzenden"
   },
+  "advanced": true,
   "hint": {
     "en": "A70 - Open a WebSocket and send data. Parameters: 1. Url including port; 2. Data.",
     "nl": "A70 - Open een WebSocket en verstuur data. Parameters: 1. Url inclusief poort; 2. Data."

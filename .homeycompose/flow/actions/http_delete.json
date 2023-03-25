@@ -3,6 +3,7 @@
   "title": {
     "en": "DELETE"
   },
+  "advanced": true,
   "hint": {
     "en": "A10 - Execute a DELETE request. Parameter: Url.",
     "nl": "A10 - Uitvoeren DELETE request. Parameter: Url."

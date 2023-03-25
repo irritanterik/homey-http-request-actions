@@ -4,6 +4,7 @@
     "en": "JSONpath value",
     "nl": "JSONpath waarde"
   },
+  "advanced": true,
   "hint": {
     "en": "T80 - Trigger this card with cards A22 and A81 by using the same value in the `trigger`-field.",
     "nl": "T80 - Trigger deze kaart met kaarten A22 en A81 door dezelfde waarde in te vullen als `trigger`."

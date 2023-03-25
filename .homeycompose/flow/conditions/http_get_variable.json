@@ -4,6 +4,7 @@
     "en": "GET JSONpath is !{{|not}}",
     "nl": "GET JSONpath is !{{|niet}}"
   },
+  "advanced": true,
   "hint": {
     "en": "C22 - Extract and check a specific value from a JSON or XML formatted GET response. Parameters: 1. Url; 2. JSON formatted query parameters; 3. JSONpath expression; 4. Value for equation.",
     "nl": "C22 - Afleiden en vergelijken van een waarde uit een JSON of XML antwoord op een GET request. Parameters: 1. Url; 2. Query parameters in JSON formaat; 3. JSONpath expressie; 4. Waarde voor vergelijking. "

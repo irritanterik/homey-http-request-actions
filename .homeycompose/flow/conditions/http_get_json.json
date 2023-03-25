@@ -4,6 +4,7 @@
     "en": "GET (query) code is !{{|not}}",
     "nl": "GET (query) code is !{{|niet}}"
   },
+  "advanced": true,
   "hint": {
     "en": "C21 - Checks the HTTP response code of a GET request. Parameters: 1. Url; 2. JSON formatted query parameters; 3. Response code.",
     "nl": "C21 - Valideer de HTTP response code van een GET request. Parameters: 1. Url; 2. Query parameters in JSON formaat; 3. Response code."

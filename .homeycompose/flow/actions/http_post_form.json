@@ -3,6 +3,7 @@
   "title": {
     "en": "POST form"
   },
+  "advanced": true,
   "hint": {
     "en": "A30 - Execute a POST with form data. Parameters: 1. Url; 2. JSON formatted form data.",
     "nl": "A30 - Uitvoeren POST request met form gegevens. Parameters: 1. Url; 2. Form gegevens in JSON formaat."
