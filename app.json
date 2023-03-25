@@ -16,6 +16,9 @@
     "en": "HTTP request triggers, conditions and actions for flows",
     "nl": "HTTP request triggers, condities en acties voor flows"
   },
+  "permissions": [
+    "homey:app:net.i-dev.betterlogic"
+  ],
   "tags": {
     "en": [
       "url",
@@ -73,6 +76,11 @@
           "en": "JSON object",
           "nl": "JSON object"
         },
+        "titleFormatted": {
+          "en": "JSON object [[trigger]]",
+          "nl": "JSON object [[trigger]]"
+        },
+        "advanced": true,
         "hint": {
           "en": "T81 - Trigger this card with card A24 by using the same value in the `trigger`-field.",
           "nl": "T81 - Trigger deze kaart met kaart A24 door dezelfde waarde in te vullen als `trigger`."
@@ -106,6 +114,12 @@
           "en": "Incoming GET",
           "nl": "Ontvangen GET"
         },
+        "titleFormatted": {
+          "en": "Incoming GET /[[event]]",
+          "nl": "Ontvangen GET /[[event]]"
+        },
+        "highlight": true,
+        "advanced": true,
         "hint": {
           "en": "T20 - Trigger this card by sending Homey a GET request.",
           "nl": "T20 - Trigger deze kaart door een GET request naar Homey te sturen."
@@ -151,6 +165,11 @@
           "en": "JSONpath value",
           "nl": "JSONpath waarde"
         },
+        "titleFormatted": {
+          "en": "JSONpath value [[trigger]]",
+          "nl": "JSONpath waarde [[trigger]]"
+        },
+        "advanced": true,
         "hint": {
           "en": "T80 - Trigger this card with cards A22 and A81 by using the same value in the `trigger`-field.",
           "nl": "T80 - Trigger deze kaart met kaarten A22 en A81 door dezelfde waarde in te vullen als `trigger`."
@@ -196,6 +215,11 @@
           "en": "Incoming POST",
           "nl": "Ontvangen POST"
         },
+        "titleFormatted": {
+          "en": "Incoming POST /[[event]]",
+          "nl": "Ontvangen POST /[[event]]"
+        },
+        "advanced": true,
         "hint": {
           "en": "T30 - Trigger this card by sending Homey a POST request. The posted body will be available in the `JSON`-token. This token can be used on cards C80, A80 and A81.",
           "nl": "T30 - Trigger deze kaart door een POST request naar Homey te verzenden. De `body` van het request is beschikbaar in de `JSON`-token. Deze token kan gebruikt worden met kaarten C80, A80 en A81."
@@ -231,6 +255,7 @@
           "en": "GET code is !{{|not}}",
           "nl": "GET code is !{{|niet}}"
         },
+        "advanced": true,
         "hint": {
           "en": "C20 - Checks the HTTP response code of a GET request. Parameters: 1. Url; 2. Response code.",
           "nl": "C20 - Valideer de HTTP response code van een GET request. Parameters: 1. Url; 2. Response code."
@@ -260,6 +285,7 @@
           "en": "GET (query) code is !{{|not}}",
           "nl": "GET (query) code is !{{|niet}}"
         },
+        "advanced": true,
         "hint": {
           "en": "C21 - Checks the HTTP response code of a GET request. Parameters: 1. Url; 2. JSON formatted query parameters; 3. Response code.",
           "nl": "C21 - Valideer de HTTP response code van een GET request. Parameters: 1. Url; 2. Query parameters in JSON formaat; 3. Response code."
@@ -296,6 +322,7 @@
           "en": "GET JSONpath is !{{|not}}",
           "nl": "GET JSONpath is !{{|niet}}"
         },
+        "advanced": true,
         "hint": {
           "en": "C22 - Extract and check a specific value from a JSON or XML formatted GET response. Parameters: 1. Url; 2. JSON formatted query parameters; 3. JSONpath expression; 4. Value for equation.",
           "nl": "C22 - Afleiden en vergelijken van een waarde uit een JSON of XML antwoord op een GET request. Parameters: 1. Url; 2. Query parameters in JSON formaat; 3. JSONpath expressie; 4. Waarde voor vergelijking. "
@@ -338,6 +365,7 @@
           "en": "JSONpath is !{{|not}}",
           "nl": "JSONpath is !{{|niet}}"
         },
+        "advanced": true,
         "hint": {
           "en": "C80 - Extract and check a specific value from the JSON token available on card T30. Parameters: 1. JSONpath expression; 2. Value for equation.",
           "nl": "C80 - Extract and check a specific value from the JSON token available on card T30. Parameters: 1. JSONpath expressie; 2. Waarde voor vergelijking."
@@ -370,6 +398,7 @@
         "title": {
           "en": "DELETE"
         },
+        "advanced": true,
         "hint": {
           "en": "A10 - Execute a DELETE request. Parameter: Url.",
           "nl": "A10 - Uitvoeren DELETE request. Parameter: Url."
@@ -389,6 +418,8 @@
         "title": {
           "en": "GET"
         },
+        "highlight": true,
+        "advanced": true,
         "hint": {
           "en": "A20 - Execute a GET request. Parameter: Url.",
           "nl": "A20 - Uitvoeren GET request. Parameter: Url."
@@ -408,6 +439,7 @@
         "title": {
           "en": "GET JSON trigger object"
         },
+        "advanced": true,
         "hint": {
           "en": "A24 - Trigger other flow with the JSON or XML formatted response of this request. The result will be available as a token in JSON format (card T81). ParametersL 1. Url; 2. Trigger corresponding with trigger value on card T81.",
           "nl": "A24 - Start een andere flow met het JSON of XML antwoord op dit verzoek. Het resultaat is beschikbaar als token in JSON formaat (card T81). Parameters: 1. Url; 2. Trigger die overeenkomst met de trigger op kaart T81."
@@ -435,6 +467,7 @@
         "title": {
           "en": "GET (query)"
         },
+        "advanced": true,
         "hint": {
           "en": "A21 - Execute a GET request. Parameters: 1. Url; 2. JSON formatted query parameters (For a query like ?a=1&b=zz use `{\"a\":1,\"b\":\"zz\"}`).",
           "nl": "A21 - Uitvoeren GET request. Parameters: 1. Url; 2. Query parameters in JSON formaat (Voor een query als ?a=1&b=zz gebruik `{\"a\":1,\"b\":\"zz\"}`)."
@@ -462,6 +495,7 @@
           "en": "GET JSONpath trigger value",
           "nl": "GET JSONpath trigger waarde"
         },
+        "advanced": true,
         "hint": {
           "en": "A23 - Extract a value from a JSON or XML formatted GET response and trigger other flows with this value available as a token (card T80). Parameters: 1. Url; 2. JSON formatted query parameters; 3. JSONpath expression; 4. Trigger corresponding with trigger value on card T80.",
           "nl": "A23 - Afleiden van een waarde uit een JSON of XML antwoord op een GET request en andere flows triggeren waarbij deze waarde beschikbaar is in de token (kaart T80). Parameters: 1. Url; 2. Query parameters in JSON formaat; 3. JSONpath expressie; 4. Trigger die overeenkomst met de trigger op kaart T80."
@@ -499,10 +533,46 @@
         ]
       },
       {
+        "id": "http_get_variable_BetterLogic",
+        "title": {
+          "en": "GET JSONpath Better Logic"
+        },
+        "advanced": true,
+        "hint": {
+          "en": "A22 - Extract a value from a JSON or XML formatted GET response and save this in a Better Logic variable. Parameters: 1. Url; 2. JSONpath expression; 3. Better Logic variable.",
+          "nl": "A22 - Afleiden van een waarde uit een JSON of XML response op een GET request en deze opslaan in een Better Logic variabele. Parameters: 1. Url; 2. JSONpath expressie; 3. Better Logic variabele."
+        },
+        "args": [
+          {
+            "name": "url",
+            "type": "text",
+            "placeholder": {
+              "en": "http://url/"
+            }
+          },
+          {
+            "name": "path",
+            "type": "text",
+            "placeholder": {
+              "en": "JSONpath"
+            }
+          },
+          {
+            "name": "betterVariable",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "variable",
+              "nl": "variabele"
+            }
+          }
+        ]
+      },
+      {
         "id": "http_post_form",
         "title": {
           "en": "POST form"
         },
+        "advanced": true,
         "hint": {
           "en": "A30 - Execute a POST with form data. Parameters: 1. Url; 2. JSON formatted form data.",
           "nl": "A30 - Uitvoeren POST request met form gegevens. Parameters: 1. Url; 2. Form gegevens in JSON formaat."
@@ -529,6 +599,7 @@
         "title": {
           "en": "POST JSON"
         },
+        "advanced": true,
         "hint": {
           "en": "A31 - Execute a POST with JSON data. Parameters: 1. Url; 2. JSON data.",
           "nl": "A31 - Uitvoeren POST request met JSON gegevens. Parameters: 1. Url; 2. JSON gegevens."
@@ -555,6 +626,7 @@
         "title": {
           "en": "POST XML"
         },
+        "advanced": true,
         "hint": {
           "en": "A32 - Execute a POST with XML data. Parameters: 1. Url; 2. XML.",
           "nl": "A32 - Uitvoeren POST request met XML gegevens. Parameters: 1. Url; 2. XML."
@@ -581,6 +653,7 @@
         "title": {
           "en": "PUT JSON"
         },
+        "advanced": true,
         "hint": {
           "en": "A40 - Execute a PUT with JSON data. Parameters: 1. Url; 2. JSON data.",
           "nl": "A40 - Uitvoeren PUT request met JSON gegevens: 1. Url; 2. JSON gegevens."
@@ -608,6 +681,11 @@
           "en": "Depricated geek card",
           "nl": "Vervallen geek card"
         },
+        "titleFormatted": {
+          "en": "Depricated geek card [[options]]",
+          "nl": "Vervallen geek card [[options]]"
+        },
+        "deprecated": true,
         "hint": {
           "en": "A90 - Please don't use this card, it's depricated as HTTP options can be used on every card with a `url` parameter.",
           "nl": "A90 - Gebruik deze kaart niet meer. Bij elke kaart met een `url` parameter kunnen HTTP options meegegeven worden."
@@ -623,11 +701,43 @@
         ]
       },
       {
+        "id": "json_evaluate_variable_BetterLogic",
+        "title": {
+          "en": "JSONpath Better Logic"
+        },
+        "advanced": true,
+        "hint": {
+          "en": "A80 - Extract a value from the JSON token available on card T30 and save this in a Better Logic variable. Parameters: 1. JSONpath expression; 2. Better Logic variable.",
+          "nl": "A80 - Afleiden van een waarde uit de JSON token die beschikbaar is op kaart T30 en deze opslaan in een Better Logic variabele. Parameters: 1. JSONpath expressie; 2. Better Logic variabele."
+        },
+        "droptoken": [
+          "string"
+        ],
+        "args": [
+          {
+            "name": "path",
+            "type": "text",
+            "placeholder": {
+              "en": "$."
+            }
+          },
+          {
+            "name": "betterVariable",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "variable",
+              "nl": "variabele"
+            }
+          }
+        ]
+      },
+      {
         "id": "json_evaluate_variable_trigger",
         "title": {
           "en": "JSONpath for trigger",
           "nl": "JSONpath for trigger"
         },
+        "advanced": true,
         "hint": {
           "en": "A81 - Extract a value from the JSON token available on card T30 and trigger other flows with this value available as a token (card T80). Parameters: 1. JSONpath expression; 2. Trigger corresponding with trigger value on card T80.",
           "nl": "A81 - Afleiden van een waarde uit de JSON token die beschikbaar is op kaart T30 en andere flows starten waarbij deze waarde beschikbaar is in de token (kaart T80). Parameters: 1. JSONpath expressie; 2. Trigger die overeenkomst met de trigger op kaart T80."
@@ -659,6 +769,7 @@
           "en": "WebSocket send",
           "nl": "WebSocket verzenden"
         },
+        "advanced": true,
         "hint": {
           "en": "A70 - Open a WebSocket and send data. Parameters: 1. Url including port; 2. Data.",
           "nl": "A70 - Open een WebSocket en verstuur data. Parameters: 1. Url inclusief poort; 2. Data."

@@ -1,0 +1,35 @@
+{
+  "id": "http_get_variable_BetterLogic",
+  "title": {
+    "en": "GET JSONpath Better Logic"
+  },
+  "advanced": true,
+  "hint": {
+    "en": "A22 - Extract a value from a JSON or XML formatted GET response and save this in a Better Logic variable. Parameters: 1. Url; 2. JSONpath expression; 3. Better Logic variable.",
+    "nl": "A22 - Afleiden van een waarde uit een JSON of XML response op een GET request en deze opslaan in een Better Logic variabele. Parameters: 1. Url; 2. JSONpath expressie; 3. Better Logic variabele."
+  },
+  "args": [
+    {
+      "name": "url",
+      "type": "text",
+      "placeholder": {
+        "en": "http://url/"
+      }
+    },
+    {
+      "name": "path",
+      "type": "text",
+      "placeholder": {
+        "en": "JSONpath"
+      }
+    },
+    {
+      "name": "betterVariable",
+      "type": "autocomplete",
+      "placeholder": {
+        "en": "variable",
+        "nl": "variabele"
+      }
+    }
+  ]
+}

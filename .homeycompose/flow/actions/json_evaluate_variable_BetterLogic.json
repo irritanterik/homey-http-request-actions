@@ -1,0 +1,31 @@
+{
+  "id": "json_evaluate_variable_BetterLogic",
+  "title": {
+    "en": "JSONpath Better Logic"
+  },
+  "advanced": true,
+  "hint": {
+    "en": "A80 - Extract a value from the JSON token available on card T30 and save this in a Better Logic variable. Parameters: 1. JSONpath expression; 2. Better Logic variable.",
+    "nl": "A80 - Afleiden van een waarde uit de JSON token die beschikbaar is op kaart T30 en deze opslaan in een Better Logic variabele. Parameters: 1. JSONpath expressie; 2. Better Logic variabele."
+  },
+  "droptoken": [
+    "string"
+  ],
+  "args": [
+    {
+      "name": "path",
+      "type": "text",
+      "placeholder": {
+        "en": "$."
+      }
+    },
+    {
+      "name": "betterVariable",
+      "type": "autocomplete",
+      "placeholder": {
+        "en": "variable",
+        "nl": "variabele"
+      }
+    }
+  ]
+}
