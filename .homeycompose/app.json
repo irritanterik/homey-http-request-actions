@@ -13,6 +13,9 @@
     "en": "HTTP request triggers, conditions and actions for flows",
     "nl": "HTTP request triggers, condities en acties voor flows"
   },
+  "permissions":[
+    "homey:app:net.i-dev.betterlogic"
+  ],
   "tags": {
     "en": [
       "url",
