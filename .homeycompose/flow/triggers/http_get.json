@@ -5,8 +5,8 @@
     "nl": "Ontvangen GET"
   },
   "titleFormatted": {
-    "en": "Incoming GET \\[[event]]",
-    "nl": "Ontvangen GET \\[[event]]"
+    "en": "Incoming GET /[[event]]",
+    "nl": "Ontvangen GET /[[event]]"
   },
   "advanced": true,
   "hint": {
